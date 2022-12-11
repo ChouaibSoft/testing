@@ -4,6 +4,11 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import 'moment-timezone';
+import 'moment/locale/fr';
+import 'moment/locale/ar-dz';
+
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );

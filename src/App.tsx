@@ -1,25 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Snackbar } from "@mui/material";
+import Locales from "locales";
+import Home from "pages/home";
+import RTLLayout from "./components/layout/utils/RTLLayout";
+import bg from 'assets/bg.jpg'
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <RTLLayout>
+      <Locales>
+        <Home></Home>
+        <img className='app__bg' src={bg} alt="background image" />
+        <div className='app__overlay'></div>
+        <Snackbar />
+      </Locales>
+    </RTLLayout>
   );
 }
 
