@@ -1,3 +1,17 @@
 {
-    "hello": "hello"
+    "header_agent": "الوكيل",
+    "header_wicket": "الشباك",
+    "spectator": "المتفرج",
+    "buttons_print": "طباعة",
+
+    "form_lastname": "اللقب",
+    "form_firstname": "الاسم",
+    "form_nin": "رقم الهوية الوطنية",
+    "form_birthdate": "تاريخ الميلاد",
+    "form_code": "الرمز",
+
+    "placeholder_scan": "امسح أو أدخل الرمز هنا",
+
+
+    "footer_copyright": " <strong>TADKIRATI</strong>  مدعوم ب <strong>DigiTicket™®</strong>   و مصمم من طرف <strong>EADN</strong>"
 }
