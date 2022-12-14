@@ -8,10 +8,11 @@ import useConfig from "./hooks/useConfig";
 import { useKeycloak } from "@react-keycloak/web";
 
 import api from 'utils/api'
+import Spectator from "components/spectator";
 
 export function App() {
   const {i18n} = useConfig()
-  const [spectatorInfo, setSpectatorInfo] = useState(null)
+  const [spectatorInfo, setSpectatorInfo] = useState("null")
 
   const { keycloak } = useKeycloak();
 
@@ -47,6 +48,7 @@ export function App() {
       <RTLLayout>
      <Locales>
         <Home spectatorInfo={spectatorInfo}></Home>
+        <Spectator spectatorInfo={spectatorInfo}></Spectator>
         <img className='app__bg' src={bg} alt="background image" />
         <div className='app__overlay'></div>
         <Snackbar />
