@@ -11,9 +11,9 @@ export const linkedInColor = '#0e76a8';
 
 const config: DefaultConfigProps = {
     defaultPath: '/',
-    i18n: 'fr',
+    i18n: 'ar',
     mode: 'light',
-    themeDirection: 'ltr'
+    themeDirection: 'rtl'
 };
 
 export default config;
