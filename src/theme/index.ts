@@ -5,7 +5,6 @@ import { typography } from "./typography";
 import { breakpoints } from "./breakpoints";
 import { shape } from "./shape";
 import { PaletteMode } from "@mui/material";
-import useConfig from "hooks/useConfig";
 
 export const theme = (dir: Direction = "ltr", mode: PaletteMode = "light") => {
   const typo = typography(dir);

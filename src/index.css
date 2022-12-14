@@ -32,4 +32,9 @@ body::-webkit-scrollbar {
   background-color: #000;
   opacity: .5;
 }
-
+html[dir='rtl'] time{
+font-family: 'tajawal';
+}
+html[dir='ltr'] time{
+font-family: 'poppins';
+}
