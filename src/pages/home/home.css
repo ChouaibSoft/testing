@@ -3,21 +3,21 @@
     width: 100%;
     height: 100vh;
     z-index: 15;
-    padding: 3rem 1rem;
 }
 
 .app__header{
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     position: absolute;
     top: 0;
     color: white;
+    width: 100vw;
 }
 .app__header .time{
     display: flex;
     align-items: center;
-    font-size: 2.3rem;
+    font-size: 2rem;
     gap: 1rem;
 }
 .app__content{
@@ -25,14 +25,24 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height:92%;
+    height:99%;
+    position: relative;
 }
 .app__footer{
     position: relative;
-    bottom: 1rem;
+    bottom: 1.5rem;
     color: white;
     text-align: right;
-    padding: 0 2rem;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-.app__header .clock{
+.app__footer button{
+    text-transform: capitalize;
+    color: inherit;
+    
+}
+.app__footer--ar{
+    text-align: left;
 }

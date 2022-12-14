@@ -45,7 +45,8 @@ export function App() {
 
   return (
       <RTLLayout>
-      <Locales>
+     <Locales>
+        <Home spectatorInfo={spectatorInfo}></Home>
         <img className='app__bg' src={bg} alt="background image" />
         <div className='app__overlay'></div>
         <Snackbar />
