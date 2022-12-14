@@ -1,24 +1,31 @@
-import React from 'react';
+import App from "./App";
+import keycloak from "./keycloak";
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 
-import 'moment-timezone';
-import 'moment/locale/fr';
-import 'moment/locale/ar-dz';
 
+
+import "moment-timezone";
+import "moment/locale/fr";
+import "moment/locale/ar-dz";
+
+import "./index.css";
+import Loader from "components/loader";
+import { ReactKeycloakProvider } from "@react-keycloak/web";
+import {  ConfigProvider } from "./contexts/configContext";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
-);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+);const keycloakInitOptions = { onLoad: "login-required" };
+
+root.render(
+  <ReactKeycloakProvider
+    initOptions={keycloakInitOptions}
+    authClient={keycloak}
+    LoadingComponent={<Loader />}
+  >
+    <ConfigProvider>
+       <App />
+    </ConfigProvider>
+  </ReactKeycloakProvider>
+);
