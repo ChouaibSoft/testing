@@ -10,10 +10,10 @@ import { I18n } from 'types/config';
 // load locales files
 const loadLocaleData = (locale: I18n) => {
     switch (locale) {
-        case 'ar':
-            return import('utils/locales/ar.json');
-        default:
+        case 'fr':
             return import('utils/locales/fr.json');
+        default:
+            return import('utils/locales/ar.json');
     }
 };
 
@@ -37,7 +37,7 @@ const Locales = ({ children }: Props) => {
     return (
         <>
             {messages && (
-                <IntlProvider locale={i18n} defaultLocale="en" messages={messages}>
+                <IntlProvider locale={i18n} defaultLocale="ar" messages={messages}>
                     {children}
                 </IntlProvider>
             )}

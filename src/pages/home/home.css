@@ -10,7 +10,7 @@
     justify-content: space-between;
     align-items: flex-start;
     position: absolute;
-    top: 0;
+    top: .5rem;
     color: white;
     width: 100vw;
 }

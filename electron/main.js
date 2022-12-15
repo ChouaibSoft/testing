@@ -103,6 +103,7 @@ ipcMain.handle("printComponent", async (event, url) => {
 
 //handle preview
 ipcMain.handle("previewComponent", async (event, url) => {
+  console.log("preview")
   let win = new BrowserWindow({
     title: "Print Preview",
     show: false,

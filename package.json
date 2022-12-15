@@ -2,7 +2,8 @@
   "name": "tadkirati-gichet",
   "version": "0.1.0",
   "private": true,
-  "main": "main.js",
+  "main": "electron/main.js",
+  "homepage": "./",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
@@ -44,14 +45,26 @@
     "eject": "react-scripts eject",
     "electron:start": "concurrently -k \"cross-env BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electronmon .\"",
     "electron-dev": "concurrently \"cross-env BROWSER=none npm start\" \"wait-on http://localhost:3000 && electron .\"",
-    "electron-pack": "electron-builder -c.extraMetadata.main=build/electron.js",
-    "preelectron-pack": "node scripts/build.js"
+    "build-electron": "cp -r electron/. build/electron && cp -r src/shared/. build/src/shared",
+    "build-electron-win": "robocopy electron build/electron /S & robocopy src/shared build/src/shared /S",
+    "package": "electron-builder build  --win -c.extraMetadata.main=build/electron/main.js --publish never"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
     ]
+  },
+  "build": {
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "publish": {
+      "provider": "github",
+      "repo": "electron-cra-example",
+      "owner": "johndyer24"
+    }
   },
   "browserslist": {
     "production": [
@@ -69,6 +82,7 @@
     "concurrently": "^7.3.0",
     "cross-env": "^7.0.3",
     "electron": "^20.1.1",
+    "electron-builder": "^23.6.0",
     "electron-packager": "^16.0.0",
     "wait-on": "^6.0.1"
   }
