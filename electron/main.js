@@ -1,71 +1,43 @@
-"use strict";
-
-const {app, ipcMain, BrowserWindow} = require("electron");
-const path = require("path");
+const { app, BrowserWindow, ipcMain } = require('electron');
+const path = require('path');
+const url = require('url');
 
 let mainWindow;
-let dev = false;
-if (
-    process.defaultApp ||
-    /[\\/]electron-prebuilt[\\/]/.test(process.execPath) ||
-    /[\\/]electron[\\/]/.test(process.execPath)
-) {
-  dev = true;
-}
 
-async function createWindow() {
+function createWindow () {
+  const startUrl = process.env.ELECTRON_START_URL || url.format({
+    pathname: path.join(__dirname, '../index.html'),
+    protocol: 'file:',
+    slashes: true,
+  });
   mainWindow = new BrowserWindow({
-    width: 1024,
-    height: 768,
-    show: false,
+    width: 800,
+    height: 600,
     webPreferences: {
-      preload: path.join(__dirname, "preload.js"),
-      contextIsolation: true,
-      enableRemoteModule: false,
-      nodeIntegration: false,
+      preload: path.join(__dirname, 'preload.js'),
     },
   });
-
-  // load the index.html of the app
-  let indexPath;
-  if (dev && process.argv.indexOf("--noDevServer") === -1) {
-    indexPath = new URL("http://localhost:3000/index.html");
-  } else {
-    indexPath = new URL(path.join(__dirname, "dist", "index.html"), "file:");
-  }
-
-  mainWindow.once("ready-to-show", () => {
-    mainWindow.show();
-    if (dev) {
-      mainWindow.webContents.openDevTools();
-    }
-  });
-
-  mainWindow.on("closed", function () {
+  mainWindow.loadURL(startUrl);
+  mainWindow.on('closed', function () {
     mainWindow = null;
-
-    // terminate the app when main window is closed
-    if (process.platform !== "darwin") {
-      app.quit();
-    }
   });
-
-  await mainWindow.loadURL(indexPath.toString());
 }
 
-app.on("ready", createWindow);
+app.on('ready', createWindow);
 
-app.on("window-all-closed", () => {
-  if (process.platform !== "darwin") {
+app.on('window-all-closed', function () {
+  if (process.platform !== 'darwin') {
     app.quit();
   }
 });
 
-app.on("activate", async () => {
+app.on('activate', function () {
   if (mainWindow === null) {
-    await createWindow();
+    createWindow();
   }
 });
+
+
 
 //-------------------- print function -----------------
 
