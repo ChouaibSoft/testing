@@ -21,6 +21,7 @@ function createWindow () {
   mainWindow.on('closed', function () {
     mainWindow = null;
   });
+  mainWindow.webContents.openDevTools();
 }
 
 app.on('ready', createWindow);
@@ -44,7 +45,7 @@ app.on('activate', function () {
 // List of all options at -
 // https://www.electronjs.org/docs/latest/api/web-contents#contentsprintoptions-callback
 const printOptions = {
-  silent: true,
+  silent: false,
   printBackground: true,
   color: true,
   margin: {
