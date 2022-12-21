@@ -40,7 +40,6 @@ export default function CodeScanner({fetchRecu}: any) {
         <CircularProgress sx={{position: 'relative', left: '-3rem', top: '.8rem'}} />
         : null
        }
-       {open ? "true " :"flase"}
        {
         <Snackbar
             anchorOrigin={{ vertical: 'top', horizontal: 'right' }}

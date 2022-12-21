@@ -7,7 +7,7 @@ import './ticket.css'
 export const Ticket = forwardRef((props, ref) => (
     //@ts-ignore
     <div className="ticket" ref={ref}>
-       <img src={ticketBG} alt="ticket" />
+       <img src={"https://firebasestorage.googleapis.com/v0/b/portfolio-dc68f.appspot.com/o/billet%20VIP-01.jpg?alt=media&token=3df3294b-3c3c-445d-b509-400a15a770c1"} alt="ticket" />
        <div className="ticket__content">
        <div className="ticket__date">
         13/01/2022

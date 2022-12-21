@@ -10,9 +10,9 @@ import { FormattedMessage } from 'react-intl';
 
 
 export default function Header() {
-  const { keycloak } = useKeycloak()
+  // const { keycloak } = useKeycloak()
+  // console.log(keycloak.token)
   //@ts-ignore
-  const decodedToken = jwt_decode(keycloak.token)
   const {i18n} = useConfig()
   return (
     <header className='app__header'>
@@ -21,8 +21,8 @@ export default function Header() {
           {/* <Typography variant='h6'><FormattedMessage id="header_agent" /> : {`${decodedToken.family_name} ${decodedToken.given_name}`}</Typography> */}
         </Box>
         <Box sx={{px: 2}} className="time">
-            <Moment format='LL' locale={i18n === 'ar' ? 'ar-dz':  i18n}>{new Date()}</Moment>  {"   /  "}
-            <Clock className='clock' format={'HH:mm'} ticking={true} timezone={'EN'} />
+            {/* <Moment format='LL' locale={i18n === 'ar' ? 'ar-dz':  i18n}>{new Date()}</Moment>  {"   /  "} */}
+            {/* <Clock className='clock' format={'HH:mm'} ticking={true} timezone={'EN'} /> */}
         </Box>
     </header>
   )

@@ -1,5 +1,5 @@
 .ticket{
-    position: relative;
+    position: absolute  ;
     width: 700px;
     height: 800px;
     font-weight: bold;
