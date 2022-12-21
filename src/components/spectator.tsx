@@ -13,9 +13,11 @@ import LocalPrintshopIcon from "@mui/icons-material/LocalPrintshop";
 import Moment from 'react-moment';
 import { FormattedMessage, useIntl } from "react-intl";
 import { AnyAaaaRecord } from "dns";
+import useConfig from "hooks/useConfig";
 
 export default function Spectator({ spectatorInfo }: any) {
   const ticketRef = createRef();
+  const {i18n} = useConfig()
   const handlePrint = function (target: any) {
     return new Promise(() => {
       console.log("forwarding print request to the main process...");
@@ -65,6 +67,8 @@ export default function Spectator({ spectatorInfo }: any) {
     print: handlePreview,
   });
 
+
+
   return (
     <>
       <Box
@@ -84,19 +88,22 @@ export default function Spectator({ spectatorInfo }: any) {
               </Typography>
               <Typography  variant="h6">
                 <strong> <FormattedMessage id="form_lastname" /> : </strong>
-                LOKBANI
+                {spectatorInfo.lastnameBilletHolder}
               </Typography>
               <Typography variant="h6">
                 <strong><FormattedMessage id="form_firstname" /> : </strong>
-                CHOUAIB
+                {spectatorInfo.firstnameBilletHolder}
               </Typography>
               <Typography variant="h6">
                 <strong><FormattedMessage id="form_nin" /> : </strong>
-                214152255545454
+                {spectatorInfo.nin}
               </Typography>
               <Typography variant="h6">
                 <strong><FormattedMessage id="form_birthdate" /> : </strong>
-                <Moment format="LL" locale={"fr"}>{new Date()}</Moment>
+                <Moment format="LL" locale={i18n}>{new Date(spectatorInfo.dateNaissance?.replace(
+                                "[UTC]",
+                                ""
+                  ))}</Moment>
               </Typography>
             </CardContent>
             <CardActions sx={{ borderTop: 1, borderColor: "grey.500" }}>

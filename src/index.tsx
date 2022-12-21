@@ -19,7 +19,9 @@ import {  ConfigProvider } from "./contexts/configContext";
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 
-);const keycloakInitOptions = { onLoad: "login-required" };
+);
+const keycloakInitOptions = { onLoad: "login-required" };
+
 
 root.render(
   <ReactKeycloakProvider

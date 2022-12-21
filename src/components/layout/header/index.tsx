@@ -22,7 +22,7 @@ export default function Header() {
         </Box>
         <Box sx={{px: 2}} className="time">
             <Moment format='LL' locale={i18n === 'ar' ? 'ar-dz':  i18n}>{new Date()}</Moment>  {"   /  "}
-            <Clock className='clock' format={'HH:mm:ss'} ticking={true} timezone={'EN'} />
+            <Clock className='clock' format={'HH:mm'} ticking={true} timezone={'EN'} />
         </Box>
     </header>
   )
