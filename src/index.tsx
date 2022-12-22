@@ -24,8 +24,13 @@ const keycloakInitOptions = { onLoad: "login-required" };
 
 
 root.render(
-  
+  <ReactKeycloakProvider
+    initOptions={keycloakInitOptions}
+    authClient={keycloak}
+    LoadingComponent={<Loader />}
+  >
     <ConfigProvider>
        <App />
     </ConfigProvider>
+  </ReactKeycloakProvider>
 );

@@ -13,6 +13,7 @@ function createWindow () {
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    icon: __dirname + '/favicon.ico',
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
     },
@@ -45,18 +46,24 @@ app.on('activate', function () {
 // List of all options at -
 // https://www.electronjs.org/docs/latest/api/web-contents#contentsprintoptions-callback
 const printOptions = {
-  silent: false,
+  silent: true,
   printBackground: true,
+  device: 'Kyocera ECOSYS M2135dn',
   color: true,
   margin: {
-    marginType: "printableArea",
+    marginType: "custom",
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0
   },
-  landscape: false,
+  landscape: true,
   pagesPerSheet: 1,
   collate: false,
   copies: 1,
   header: "Page header",
   footer: "Page footer",
+  pageSize :  'A5'
 };
 
 //handle print
@@ -69,7 +76,6 @@ ipcMain.handle("printComponent", async (event, url) => {
       if (!success) console.log(failureReason);
     });
   });
-  console.log("here")
   await win.loadURL(url);
   return "shown print dialog";
 });
@@ -87,6 +93,7 @@ ipcMain.handle("previewComponent", async (event, url) => {
     win.webContents.printToPDF(printOptions).then((data) => {
       const buf = Buffer.from(data);
       data = buf.toString("base64");
+     
       const url = "data:application/pdf;base64," + data;
 
       win.webContents.on("ready-to-show", () => {

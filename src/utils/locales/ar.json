@@ -3,6 +3,10 @@
     "header_wicket": "الشباك",
     "spectator": "المتفرج",
     "buttons_print": "طباعة",
+    "buttons_confirm": "تأكيد",
+    "buttons_try-again": "حاول مجددا",
+    "buttons_submit": "إرسال",
+    "buttons_return": "رجوع",
 
     "form_lastname": "اللقب",
     "form_firstname": "الاسم",
@@ -13,5 +17,21 @@
     "placeholder_scan": "امسح أو أدخل الرمز هنا",
 
 
-    "footer_copyright": " <strong>TADKIRATI</strong>  مدعوم ب <strong>DigiTicket™®</strong>   و مصمم من طرف <strong>EADN</strong>"
+    "footer_copyright": " <strong>TADKIRATI</strong>  مدعوم ب <strong>DigiTicket™®</strong>   و مصمم من طرف <strong>EADN</strong>",
+
+    "TADKIRATI_TICKET_DOES_NOT_EXIST": "التذكرة غير موجودة!",
+    "TICKET_ALREADY_PRINTED": "هذه التذكرة مطبوعة من قبل",
+
+    "is_printing": "جاري عملية الطباعة ، الرجاء الانتظار ..",
+    "printing_confirm": "يرجى التحقق من حالة التذكرة المطبوعة ، إذا كانت صالحة يرجى <strong>تأكيد الطباعة</strong>. <br/> إذا كانت هناك مشكلة في الطباعة ، يرجى <strong>الإبلاغ عنها</strong> و<strong> المحاولة مرة أخرى </strong>.",
+    "motif": "سبب الفشل",
+    "required": "هدا الحقل اجباري",
+    "select_option": "الرجاء تحديد خيار",
+
+    "paper_issue": "مشكلة في الورق",
+    "ink_issue": " مشكلة في الحبر",
+    "connection_issue": "مشكلة في الاتصال",
+    "error_issue": "عطب",
+
+    "UNKNOWN": "حدث خطأ غير متوقع ، يرجى المحاولة مرة أخرى"
 }

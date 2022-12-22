@@ -3,6 +3,10 @@
     "header_wicket": "Guichet",
     "spectator": "Spectateur",
     "buttons_print": "Imprimer",
+    "buttons_confirm": "Confirmer",
+    "buttons_try-again": "Réessayer",
+    "buttons_submit": "Envoyer",
+    "buttons_return": "Retourner",
 
     "form_lastname": "Nom",
     "form_firstname": "Prénom",
@@ -11,5 +15,22 @@
     "form_code": "Code",
     "placeholder_scan": "Scannez ou entrez le code ici",
 
-    "footer_copyright": "TADKIRATI propulsé par <strong>DigiTicket™®</strong> et conçu par <strong>EADN</strong>"
+    "footer_copyright": "TADKIRATI propulsé par <strong>DigiTicket™®</strong> et conçu par <strong>EADN</strong>",
+
+    "TADKIRATI_TICKET_DOES_NOT_EXIST": "Le billet n'existe pas !",
+    "TICKET_ALREADY_PRINTED": "Ce billet est déjà imprimé",
+
+    "is_printing": "Impression en cours , veuillez patienter..",
+    "printing_confirm": "Veuillez vérifier l'etat du ticket imprimé, s'il est valable veuillez <strong>confirmer l'impression</strong> .<br /> S'il ya un problème d'impression veuillez  le <strong>signaler</strong> et <strong>rééssayer</strong> à nouveau.",
+    "motif": "Motif d'échec",
+    "required": "Ce champ est obligatoire",
+    "select_option": "Veuillez sélectionner une option",
+
+    "paper_issue": "Problème de papier",
+    "ink_issue": "Problème de l'encre",
+    "connection_issue": "Problème de connection",
+    "error_issue": "Une panne",
+
+    "UNKNOWN": "Une erreur inattendue s'est produite, veuillez réessayer"
+
 }
