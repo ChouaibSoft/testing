@@ -7,4 +7,10 @@ const keycloak = new Keycloak({
     clientId: process.env.REACT_APP_KEYCLOAK_CLIENT
 });
 
+// Keycloak initConfig
+keycloak.init({
+    checkLoginIframe: false,
+    redirectUri: 'http://localhost/keycloak'
+  });
+
 export default keycloak;

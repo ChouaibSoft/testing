@@ -11,19 +11,44 @@ function createWindow () {
     slashes: true,
   });
   mainWindow = new BrowserWindow({
-    width: 800,
+    width: 1000,
     height: 600,
+    // autoHideMenuBar: true,
     icon: __dirname + '/favicon.ico',
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
     },
   });
   mainWindow.loadURL(startUrl);
+  const {session: {webRequest}} = mainWindow.webContents;
+  const filter = {
+    urls: [
+      'http://localhost/keycloak/*'
+    ]
+  };
+  try{
+    webRequest.onBeforeRequest(filter, async ({url}) => {
+      console.log(filter)
+      if(url.includes('#state')){
+        const params = url.slice(url.indexOf('#'));
+        if(process.env.NODE_ENV !== 'production'){
+          mainWindow.loadURL('http://localhost:3000' + params );
+        }else{
+          mainWindow.loadURL( 'file://' + path.join(__dirname, '../index.html' + params) );
+        }
+        console.log("params", params)
+      }
+  
+    });
+  }catch(e){
+    console.log("load")
+  }
   mainWindow.on('closed', function () {
     mainWindow = null;
   });
-  mainWindow.webContents.openDevTools();
 }
+
+
 
 app.on('ready', createWindow);
 
