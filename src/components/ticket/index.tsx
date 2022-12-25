@@ -5,280 +5,448 @@ import QRCode from "react-qr-code";
 
 import './ticket.css'
 
-export const Ticket = forwardRef((props: any, ref) => 
-     (
-        (
-            //@ts-ignore
-            <div className="ticket" ref={ref}>
-                {/* <img src={"https://firebasestorage.googleapis.com/v0/b/portfolio-dc68f.appspot.com/o/model%20billet%20vide.jpg?alt=media&token=1a4ef855-1899-4f8a-86bb-d7c17fe5de87"} alt="ticket" /> */}
-                <div className="ticket__content">
-                    <div className="wrapper">
-                        <div className="content">
-                            <div>
-                                <strong>
-                                    Date:
-                                </strong>
-                                <strong>
-                                    Date:
-                                </strong>
-                            </div>
-                            <div>
-                                <p className="date">
-                                    {
-                                        props?.spectatorInfo?.dateMatch1?.slice(0, 10)
-                                    }
-                                </p>
-                            </div>
+export const Ticket = forwardRef((props: any, ref) =>
+(
+    (
+        //@ts-ignore
+        <div className="ticket" ref={ref}>
+            <img src={"https://firebasestorage.googleapis.com/v0/b/portfolio-dc68f.appspot.com/o/tmp.jpg?alt=media&token=09492d22-2db8-475d-baae-e7f80955dae9"} alt="ticket" />
+            <div className="ticket__content">
+                <div className="wrapper">
+                    <div className="content">
+                        <div>
+                            <strong>
+                                Date
+                            </strong>
+                            <strong>
+                                التاريخ
+                            </strong>
                         </div>
-                        <div className="content">
-                            <div>
-                                <strong>
-                                    Ouverture des portes:
-                                </strong>
-                                <strong>
-                                    Gates Open:
-                                </strong>
-                            </div>
-                            <div>
-                                <p>
-                                    {
-                                        props?.spectatorInfo?.dateOuverturePorte?.slice(11, 16)
-                                    }
-                                </p>
-                            </div>
-                        </div>
-                        <div className="content">
-                            <div>
-                                <strong>
-                                    Stade:
-                                </strong>
-                                <strong>
-                                    Stadium:
-                                </strong>
-                            </div>
-                            <div>
-                                <p>{props?.spectatorInfo?.infrastructure}</p>
-                            </div>
+                        <div>
+                            <p>
+                                <Moment format="D MMM YYYY" locale="en">{new Date(props?.spectatorInfo?.dateMatch1?.replace(
+                                    "[UTC]",
+                                    ""
+                                ))}</Moment>
+                            </p>
                         </div>
                     </div>
+                    <div className="content">
+                        <div>
+                            <strong>
+                                Gates open
+                            </strong>
+                            <strong>
+                                موعد فتح الأبواب
+                            </strong>
+                        </div>
+                        <div>
+                            <p>
+                                <Moment format="HH:mm">{new Date(props?.spectatorInfo?.dateOuverturePorte?.replace(
+                                    "[UTC]",
+                                    ""
+                                ))}</Moment>
+                            </p>
+                        </div>
+                    </div>
+                    <div className="content">
+                        <div>
+                            <strong>
+                                Price
+                            </strong>
+                            <strong>
+                                السعر
+                            </strong>
+                        </div>
+                        <div>
+                            <p>{props?.spectatorInfo?.prix} DZD</p>
+                        </div>
+                    </div>
+                    <div className="content">
+                        <div>
+                            <strong>
+                                Stadium
+                            </strong>
+                            <strong>
+                                الملعب
+                            </strong>
+                        </div>
+                        <div>
+                            <p>{props?.spectatorInfo?.infrastructure}
+                                oran olympic
 
-                    <div className="wrapper">
-                        <div className="content">
-                            <div>
-                                <strong>
-                                    Match:
-                                </strong>
-                            </div>
-                            <div>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="wrapper">
+                    <div className="content">
+                        <div>
+                            <strong>
+                                Match
+                            </strong>
+                            <strong>
+                                المباراة
+                            </strong>
+                        </div>
+                        <div>
+                            {
+                                props?.spectatorInfo?.match.includes('\n') ?
+                                    <div className="match">
+                                        <p>{props?.spectatorInfo?.match?.split('\n')[0]}</p>
+                                        <p>{props?.spectatorInfo?.match?.split('\n')[1]}</p>
+                                    </div>
+                                    : <div className="match">
+                                        <p>{props?.spectatorInfo?.match}</p>
+                                    </div>
+                            }
+
+                        </div>
+                    </div>
+                    <div className="content">
+                        <div>
+                            <strong>
+                                Kiff-of time
+                            </strong>
+                            <strong>
+                                صافرة البداية
+                            </strong>
+                        </div>
+                        <div>
+                            <p>
+                                <Moment format="HH:mm">{new Date(props?.spectatorInfo?.dateMatch1?.replace(
+                                    "[UTC]",
+                                    ""
+                                ))}</Moment>
+                            </p>
+                            {
+                                props?.spectatorInfo?.dateMatch2 ?
+                                    <p>
+                                        <Moment format="HH:mm">{new Date(props?.spectatorInfo?.dateMatch2?.replace(
+                                            "[UTC]",
+                                            ""
+                                        ))}</Moment>
+                                    </p> : null
+                            }
+                        </div>
+                    </div>
+                    <div className="content">
+                        <div>
+                            <strong>
+                                Spectator
+                            </strong>
+                            <strong>
+                                المتفرج
+                            </strong>
+                        </div>
+                        <div>
+                            <p>
+                                {`${props?.spectatorInfo?.lastnameBilletHolder} ${props?.spectatorInfo?.firstnameBilletHolder}`}
+                            </p>
+                        </div>
+                    </div>
+                    <div className="content">
+                        <div>
+                            <strong>
+                                accompanist
+                            </strong>
+                            <strong>
+                                المرافق
+                            </strong>
+                        </div>
+                        <div>
+                            <p>
+                                {`${props?.spectatorInfo?.accompagnateur}`}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div className="wrapper">
+                    <div className="content">
+                        <div>
+                            <strong>
+                                Category
+                            </strong>
+                            <strong>
+                                الفئة
+                            </strong>
+                        </div>
+                        <div>
+                            <p>{props?.spectatorInfo?.categoryLibelle}</p>
+                        </div>
+                    </div>
+                    <div className="content">
+                        <div>
+                            <strong>
+                                Gate
+                            </strong>
+                            <strong>
+                                البوابة
+                            </strong>
+                        </div>
+                        <div>
+                            <p>
                                 {
-                                    props?.spectatorInfo?.match.includes('\n') ?
-                                        <div className="match">
-                                            <p>{props?.spectatorInfo?.match?.split('\n')[0]}</p>
-                                            <p>{props?.spectatorInfo?.match?.split('\n')[1]}</p>
-                                        </div>
-                                        : <div className="match">
-                                            <p>{props?.spectatorInfo?.match}</p>
-                                        </div>
+                                    props?.spectatorInfo?.portes
                                 }
-
-                            </div>
-                        </div>
-                        <div className="content">
-                            <div>
-                                <strong>
-                                    Coup d'envoi:
-                                </strong>
-                                <strong>
-                                    Kiff-of time:
-                                </strong>
-                            </div>
-                            <div>
-                                <p>
-                                    {
-                                        props?.spectatorInfo?.dateMatch1?.slice(11, 16)
-                                    }                             </p>
-                                <p>
-                                    {
-                                        props?.spectatorInfo?.dateMatch2?.slice(11, 16)
-                                    }                             </p>
-
-                            </div>
+                            </p>
                         </div>
                     </div>
-
-
-                    <div className="wrapper">
-                        <div className="content">
-                            <div>
-                                <strong>
-                                    Catégorie / Category:
-                                </strong>
-                                <strong>
-                                    Prix / Price:
-                                </strong>
-                            </div>
-                            <div>
-                                <p>{props?.spectatorInfo?.zoneLibelle}</p>
-                                <p>{props?.spectatorInfo?.prix}.00 DZD</p>
-                            </div>
+                    <div className="content">
+                        <div>
+                            <strong>
+                                Sector
+                            </strong>
+                            <strong>
+                                المدرج
+                            </strong>
                         </div>
-                        <div className="content">
-                            <div>
-                                <strong>
-                                    Nom:
-                                </strong>
-                                <strong>
-                                    Name:
-                                </strong>
-                            </div>
-                            <div>
-                                <p>
-                                    {`${props?.spectatorInfo?.lastnameBilletHolder} ${props?.spectatorInfo?.firstnameBilletHolder}`}
-                                </p>
-                            </div>
+                        <div>
+                            <p>{props?.spectatorInfo?.zoneLibelle}</p>
                         </div>
                     </div>
-                </div>
-
-                <div className="ticket_content-replicate">
-                    <div className="wrapper">
-                        <div className="content">
-                            <div>
-                                <strong>
-                                    Date:
-                                </strong>
-                                <strong>
-                                    Date:
-                                </strong>
-                            </div>
-                            <div>
-                                <p className="date">
-                                    {
-                                        props?.spectatorInfo?.dateMatch1?.slice(0, 10)
-                                    }
-                                </p>
-                            </div>
+                    <div className="content">
+                        <div>
+                            <strong>
+                                Seat
+                            </strong>
+                            <strong>
+                                المقعد
+                            </strong>
                         </div>
-                        <div className="content">
-                            <div>
-                                <strong>
-                                    Ouverture des portes:
-                                </strong>
-                                <strong>
-                                    Gates Open:
-                                </strong>
-                            </div>
-                            <div>
-                                <p>
-                                    {
-                                        props?.spectatorInfo?.dateOuverturePorte?.slice(11, 16)
-                                    }
-                                </p>
-                            </div>
-                        </div>
-                        <div className="content">
-                            <div>
-                                <strong>
-                                    Stade:
-                                </strong>
-                                <strong>
-                                    Stadium:
-                                </strong>
-                            </div>
-                            <div>
-                                <p>{props?.spectatorInfo?.infrastructure}</p>
-                            </div>
+                        <div>
+                            <p>/</p>
                         </div>
                     </div>
-
-                    <div className="wrapper">
-                        <div className="content">
-                            <div>
-                                <strong>
-                                    Match:
-                                </strong>
-                            </div>
-                            <div>
-                                {
-                                    props?.spectatorInfo?.match.includes('\n') ?
-                                        <div className="match">
-                                            <p>{props?.spectatorInfo?.match?.split('\n')[0]}</p>
-                                            <p>{props?.spectatorInfo?.match?.split('\n')[1]}</p>
-                                        </div>
-                                        : <div className="match">
-                                            <p>{props?.spectatorInfo?.match}</p>
-                                        </div>
-                                }
-
-                            </div>
-                        </div>
-                        <div className="content">
-                            <div>
-                                <strong>
-                                    Coup d'envoi:
-                                </strong>
-                                <strong>
-                                    Kiff-of time:
-                                </strong>
-                            </div>
-                            <div>
-                                <p>
-                                    {
-                                        props?.spectatorInfo?.dateMatch1?.slice(11, 16)
-                                    }                             </p>
-                                <p>
-                                    {
-                                        props?.spectatorInfo?.dateMatch2?.slice(11, 16)
-                                    }                             </p>
-
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div className="wrapper">
-                        <div className="content">
-                            <div>
-                                <strong>
-                                    Catégorie / Category:
-                                </strong>
-                                <strong>
-                                    Prix / Price:
-                                </strong>
-                            </div>
-                            <div>
-                                <p>{props?.spectatorInfo?.zoneLibelle}</p>
-                                <p>{props?.spectatorInfo?.prix}.00 DZD</p>
-                            </div>
-                        </div>
-                        <div className="content">
-                            <div>
-                                <strong>
-                                    Nom:
-                                </strong>
-                                <strong>
-                                    Name:
-                                </strong>
-                            </div>
-                            <div>
-                                <p>
-                                    {`${props?.spectatorInfo?.lastnameBilletHolder} ${props?.spectatorInfo?.firstnameBilletHolder}`}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="ticket_qr_code">
-                    <QRCode className="qr-code" value={props?.spectatorInfo ? props?.spectatorInfo?.referenceBillet : ''} />
-                </div>
-                <div className="ticket-code">
-                    <p> {props?.spectatorInfo?.referenceBillet} </p>
-                </div>
-                <div className="ticket-code-replicate">
-                    <p> {props?.spectatorInfo?.referenceBillet} </p>
                 </div>
             </div>
-        )
+
+            <div className="ticket__content-replicate">
+                <div className="wrapper">
+                    <div className="content">
+                        <div>
+                            <strong>
+                                Date
+                            </strong>
+                            <strong>
+                                التاريخ
+                            </strong>
+                        </div>
+                        <div>
+                            <p>
+                                <Moment format="D MMM YYYY" locale="en">{new Date(props?.spectatorInfo?.dateMatch1?.replace(
+                                    "[UTC]",
+                                    ""
+                                ))}</Moment>
+                            </p>
+                        </div>
+                    </div>
+                    <div className="content">
+                        <div>
+                            <strong>
+                                Gates open
+                            </strong>
+                            <strong>
+                                موعد فتح الأبواب
+                            </strong>
+                        </div>
+                        <div>
+                            <p>
+                                <Moment format="HH:mm">{new Date(props?.spectatorInfo?.dateOuverturePorte?.replace(
+                                    "[UTC]",
+                                    ""
+                                ))}</Moment>
+                            </p>
+                        </div>
+                    </div>
+                    <div className="content">
+                        <div>
+                            <strong>
+                                Price
+                            </strong>
+                            <strong>
+                                السعر
+                            </strong>
+                        </div>
+                        <div>
+                            <p>{props?.spectatorInfo?.prix} DZD</p>
+                        </div>
+                    </div>
+                    <div className="content">
+                        <div>
+                            <strong>
+                                Stadium
+                            </strong>
+                            <strong>
+                                الملعب
+                            </strong>
+                        </div>
+                        <div>
+                            <p>{props?.spectatorInfo?.infrastructure}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="wrapper">
+                    <div className="content">
+                        <div>
+                            <strong>
+                                Match
+                            </strong>
+                            <strong>
+                                المباراة
+                            </strong>
+                        </div>
+                        <div>
+                            {
+                                props?.spectatorInfo?.match.includes('\n') ?
+                                    <div className="match">
+                                        <p>{props?.spectatorInfo?.match?.split('\n')[0]}</p>
+                                        <p>{props?.spectatorInfo?.match?.split('\n')[1]}</p>
+                                    </div>
+                                    : <div className="match">
+                                        <p>{props?.spectatorInfo?.match}</p>
+                                    </div>
+                            }
+
+                        </div>
+                    </div>
+                    <div className="content">
+                        <div>
+                            <strong>
+                                Kiff-of time
+                            </strong>
+                            <strong>
+                                صافرة البداية
+                            </strong>
+                        </div>
+                        <div>
+                            <p>
+                                <Moment format="HH:mm">{new Date(props?.spectatorInfo?.dateMatch1?.replace(
+                                    "[UTC]",
+                                    ""
+                                ))}</Moment>
+                            </p>
+                            {
+                                props?.spectatorInfo?.dateMatch2 ?
+                                    <p>
+                                        <Moment format="HH:mm">{new Date(props?.spectatorInfo?.dateMatch2?.replace(
+                                            "[UTC]",
+                                            ""
+                                        ))}</Moment>
+                                    </p> : null
+                            }
+                        </div>
+                    </div>
+                    <div className="content">
+                        <div>
+                            <strong>
+                                Spectator
+                            </strong>
+                            <strong>
+                                المتفرج
+                            </strong>
+                        </div>
+                        <div>
+                            <p>
+                                {`${props?.spectatorInfo?.lastnameBilletHolder} ${props?.spectatorInfo?.firstnameBilletHolder}`}
+                            </p>
+                        </div>
+                    </div>
+                    <div className="content">
+                        <div>
+                            <strong>
+                                accompanist
+                            </strong>
+                            <strong>
+                                المرافق
+                            </strong>
+                        </div>
+                        <div>
+                            <p>
+                                {`${props?.spectatorInfo?.accompagnateur}`}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div className="wrapper">
+                    <div className="content">
+                        <div>
+                            <strong>
+                                Category
+                            </strong>
+                            <strong>
+                                الفئة
+                            </strong>
+                        </div>
+                        <div>
+                            <p>{props?.spectatorInfo?.categoryLibelle}</p>
+                        </div>
+                    </div>
+                    <div className="content">
+                        <div>
+                            <strong>
+                                Gate
+                            </strong>
+                            <strong>
+                                البوابة
+                            </strong>
+                        </div>
+                        <div>
+                            <p>
+                                {
+                                    props?.spectatorInfo?.portes
+                                }
+                            </p>
+                        </div>
+                    </div>
+                    <div className="content">
+                        <div>
+                            <strong>
+                                Sector
+                            </strong>
+                            <strong>
+                                المدرج
+                            </strong>
+                        </div>
+                        <div>
+                            <p>{props?.spectatorInfo?.zoneLibelle}</p>
+                        </div>
+                    </div>
+                    <div className="content">
+                        <div>
+                            <strong>
+                                Seat
+                            </strong>
+                            <strong>
+                                المقعد
+                            </strong>
+                        </div>
+                        <div>
+                            <p>/</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="ticket_qr_code">
+                <QRCode className="qr-code" value={props?.spectatorInfo ? props?.spectatorInfo?.referenceBillet : ''} />
+            </div>
+            <div className="ticket_qr_code-replicate">
+                <QRCode className="qr-code" value={props?.spectatorInfo ? props?.spectatorInfo?.referenceBillet : ''} />
+            </div>
+            <div className="ticket-code">
+                <p> {props?.spectatorInfo?.referenceBillet} </p>
+            </div>
+            <div className="ticket-code-replicate">
+                <p> {props?.spectatorInfo?.referenceBillet} </p>
+            </div>
+        </div>
     )
+)
 );
 

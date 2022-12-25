@@ -4,9 +4,8 @@
     height: 148mm;
     font-weight: bold;
     top: 0;
-    z-index: 9999;
+    z-index: 15;
     direction: ltr;
-    /* transform: rotate(270deg); */
 }
 .ticket img{
     position: absolute;
@@ -23,17 +22,19 @@
     left: 5%;
     width: 119mm;
     height: 42mm;
-    padding: .5rem 1rem;
+    padding: 0rem 1rem;
+    padding-top: 3px;
+    padding-bottom: 3px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
-.ticket_content-replicate{
+.ticket__content-replicate{
     position: absolute;
     top: 62%;
     left: 5%;
-    width: 166mm;
-    height: 44mm;
+    width: 119mm;
+    height: 42mm;
     padding: 0.5rem 1rem;
     display: flex;
     flex-direction: column;
@@ -41,8 +42,13 @@
 }
 .ticket_qr_code{
     position: absolute;
-    top: 35.5%;
-    left: 89.1%;
+    top: 35.3%;
+    left: 89.3%;
+}
+.ticket_qr_code-replicate{
+    position: absolute;
+    top: 80.5%;
+    left: 89.3%;
 }
 .ticket-code{
     position: absolute;
@@ -51,8 +57,8 @@
 }
 .ticket-code-replicate{
     position: absolute;
-    top: 88.8%;
-    left: 73.5%;    
+    top: 91.5%;
+    left: 47.5%;    
 }
 .ticket-code p{
     font-size: 1.1rem;
@@ -65,12 +71,19 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
-    gap: .5rem;
 }
-.wrapper:nth-child(2) {
-    justify-content: space-between;
+.wrapper:not(:last-child){
+    border-bottom: 1px solid #707070;
+    padding-bottom: 1.5px;
 }
-.wrapper:nth-child(2) .content div:nth-child(1){
+.wrapper:nth-child(1) .content:nth-child(4){
+    flex: .5;
+}
+.wrapper:nth-child(2) .content,
+.wrapper:nth-child(3) .content{
+    flex: 1 1 0;
+}
+/* .wrapper:nth-child(2) .content div:nth-child(1){
     margin-right: 1rem;
 }
 .wrapper:nth-child(2) .content:nth-child(2){
@@ -78,28 +91,35 @@
 }
 .wrapper:nth-child(3) .content:nth-child(2){
     flex: .7;
-}
+} */
 .content{
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    flex-direction: column;
+    text-align: center;
+    padding: 1px 0;
 }
 .content .match{
     text-align: center;
 }
 .content strong{
     display: block;
-    font-weight: 600;
+    font-weight: 400;
     white-space: nowrap;
-    font-size: .8rem;
+    font-size: 6px;
+    text-transform: uppercase;
+    font-family: 'poppins';
 }
+.content strong:nth-child(2){
+    font-size: 9px;
+}
+
 .content p{
-    font-weight: 500;
+    font-weight: 700;
     padding: 0;
+    font-size: 9px;
     margin: 0;
-    margin-left: .5rem;
-    margin-bottom: .2rem;
-    font-size: .85rem;
+    font-family: 'poppins';
 }
 .content .date{
     white-space: nowrap;
