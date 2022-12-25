@@ -13,6 +13,7 @@
     "form_nin": "NIN",
     "form_birthdate": "Date de naissance",
     "form_code": "Code",
+    "form_accompagnateur": "Accompagnateur",
     "placeholder_scan": "Scannez ou entrez le code ici",
 
     "footer_copyright": "TADKIRATI propulsé par <strong>DigiTicket™®</strong> et conçu par <strong>EADN</strong>",

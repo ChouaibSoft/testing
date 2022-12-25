@@ -12,6 +12,7 @@
     "form_firstname": "الاسم",
     "form_nin": "رقم الهوية الوطنية",
     "form_birthdate": "تاريخ الميلاد",
+    "form_accompagnateur": "المرافق",
     "form_code": "الرمز",
 
     "placeholder_scan": "امسح أو أدخل الرمز هنا",
