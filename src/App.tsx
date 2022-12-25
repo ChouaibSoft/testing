@@ -49,14 +49,17 @@ export function App() {
   }, [])
 
   useEffect(() => {
-    //@ts-ignore
-    let decoedToken = jwtDecode(keycloak.token)
-     //@ts-ignore
-    if(!allowed &&  !decoedToken.groups.includes('agentRetrait_role')){
-      keycloak.logout()
-    }else{
-      setAllowed(true)
+    if(!allowed){
+      //@ts-ignore
+      let decoedToken = jwtDecode(keycloak.token)
+        //@ts-ignore
+        if(!decoedToken.groups.includes('agentRetrait_role')){
+          keycloak.logout()
+        }else{
+          setAllowed(true)
+        }
     }
+  
     keycloak.onTokenExpired = () => {
       keycloak.updateToken(3600).then(() => {
         api.interceptors.request.use(function (config) {
