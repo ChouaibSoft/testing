@@ -19,6 +19,7 @@ function createWindow () {
       preload: path.join(__dirname, 'preload.js'),
     },
   });
+  mainWindow.maximize()
   mainWindow.loadURL(startUrl);
   const {session: {webRequest}} = mainWindow.webContents;
   const filter = {
