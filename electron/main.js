@@ -31,12 +31,7 @@ function createWindow () {
       console.log(filter)
       if(url.includes('#state')){
         const params = url.slice(url.indexOf('#'));
-        if(process.env.NODE_ENV !== 'production'){
-          mainWindow.loadURL('http://localhost:3000' + params );
-        }else{
-          mainWindow.loadURL( 'file://' + path.join(__dirname, '../index.html' + params) );
-        }
-        console.log("params", params)
+        mainWindow.loadURL( 'file://' + path.join(__dirname, '../index.html' + params) );
       }
   
     });

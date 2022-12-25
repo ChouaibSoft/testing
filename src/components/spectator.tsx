@@ -250,7 +250,6 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
                         {spectatorInfo.accompagnateur}
                       </Typography> : null
                   }
-
                   <Typography variant="h6">
                     <strong><FormattedMessage id="form_firstname" /> : </strong>
                     {spectatorInfo.firstnameBilletHolder}

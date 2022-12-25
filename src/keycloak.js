@@ -7,13 +7,11 @@ const keycloak = new Keycloak({
     clientId: process.env.REACT_APP_KEYCLOAK_CLIENT
 });
 
-if(process.env.NODE_ENV === 'production'){
-  // Keycloak initConfig
-  keycloak.init({
-    checkLoginIframe: false,
-    redirectUri: 'http://localhost/keycloak'
-  });
-}
+// Keycloak initConfig
+keycloak.init({
+  checkLoginIframe: false,
+  redirectUri: 'http://localhost/keycloak'
+});
 
 
 
