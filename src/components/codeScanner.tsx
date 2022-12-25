@@ -21,8 +21,7 @@ export default function CodeScanner({ fetchRecu }: any) {
   const handleChange = (e: any) => {
     setValue(e.value)
     setOpen(false)
-    let refLength = process.env.NODE_ENV === 'development' ? 6 : 14
-    if (e.value.length ===  refLength) {
+    if (e.value.length ===  6) {
       setLoading(true)
       fetchRecu(e.value, (error: string) => {
         setLoading(false)
