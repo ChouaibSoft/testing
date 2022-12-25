@@ -11,8 +11,9 @@ function createWindow () {
     slashes: true,
   });
   mainWindow = new BrowserWindow({
-    width: 1000,
-    height: 600,
+    width: 1500,
+    height: 1200,
+    fullscreen: true,
     // autoHideMenuBar: true,
     icon: __dirname + '/favicon.ico',
     webPreferences: {
