@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import RTLLayout from "./components/layout/utils/RTLLayout";
 import Locales from "./locales";
-import { Box, CircularProgress, Snackbar, ThemeProvider, Typography } from "@mui/material";
+import {  Snackbar, ThemeProvider, Typography } from "@mui/material";
 import bg from "./assets/bg.jpg";
 import Home from "./pages/home";
 import useConfig from "./hooks/useConfig";
@@ -10,13 +10,14 @@ import { useKeycloak } from "@react-keycloak/web";
 import api from "utils/api";
 import Spectator from "components/spectator";
 import { theme } from "./theme";
+import jwtDecode from "jwt-decode";
 
-import axios from 'axios';
 export function App() {
   const { themeDirection, mode } = useConfig();
   const [spectatorInfo, setSpectatorInfo] = useState(null);
   const [fetching, setFetching] = useState(false)
   const [prevState, setPrevState] = useState(false)
+  const [allowed, setAllowed] = useState(false)
 
   const { keycloak } = useKeycloak();
 
@@ -48,6 +49,14 @@ export function App() {
   }, [])
 
   useEffect(() => {
+    //@ts-ignore
+    let decoedToken = jwtDecode(keycloak.token)
+     //@ts-ignore
+    if(!allowed &&  !decoedToken.groups.includes('agentRetrait_role')){
+      keycloak.logout()
+    }else{
+      setAllowed(true)
+    }
     keycloak.onTokenExpired = () => {
       keycloak.updateToken(3600).then(() => {
         api.interceptors.request.use(function (config) {
@@ -78,7 +87,7 @@ export function App() {
   }, [keycloak]);
 
 
-  return (
+  return allowed ? (
     <ThemeProvider theme={theme(themeDirection, mode)}>
       <RTLLayout>
         <Locales>
@@ -91,7 +100,7 @@ export function App() {
         </Locales>
       </RTLLayout>
     </ThemeProvider>
-  );
+  ) : null;
 }
 
-export default App;
+export default  App;

@@ -4,7 +4,7 @@
   "private": true,
   "main": "electron/main.js",
   "author": "eadn",
-  "description": "this app for agent",
+  "description": "Tadkirati Guichet",
   "homepage": "./",
   "dependencies": {
     "@emotion/react": "^11.10.5",
@@ -53,7 +53,7 @@
     "start-electron": "set ELECTRON_START_URL=http://localhost:3000 && electron .",
     "build-electron": "cp -r electron/. build/electron && cp -r src/shared/. build/src/shared",
     "build-electron-win": "robocopy electron build/electron /S",
-    "package": "electron-builder build  --win -c.extraMetadata.main=build/electron/main.js --publish never",
+    "package": "electron-builder build  --win -c.extraMetadata.main=build/electron/main.js  --publish never",
     "build-desktop": "yarn run clean-win && yarn run build && yarn run build-electron-win && yarn run package"
   },
   "eslintConfig": {
@@ -66,7 +66,7 @@
     "productName": "Tadkirati Guichet",
     "copyright": "Copyright © 2023 ${author}",
     "win": {
-      "icon": "./public/favicon.png"
+      "icon": "./electron/favicon.png"
     },
     "files": [
       "build/**/*",

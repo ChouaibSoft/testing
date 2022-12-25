@@ -71,9 +71,9 @@ app.on('activate', function () {
 // List of all options at -
 // https://www.electronjs.org/docs/latest/api/web-contents#contentsprintoptions-callback
 const printOptions = {
-  silent: true,
+  silent: false,
   printBackground: true,
-  device: 'Kyocera ECOSYS M2135dn',
+  // device: 'Kyocera ECOSYS M2135dn',
   color: true,
   margin: {
     marginType: "custom",
