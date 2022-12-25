@@ -21,7 +21,8 @@ export default function CodeScanner({ fetchRecu }: any) {
   const handleChange = (e: any) => {
     setValue(e.value)
     setOpen(false)
-    if (e.value.length === 6) {
+    let refLength = process.env.NODE_ENV === 'development' ? 6 : 14
+    if (e.value.length ===  refLength) {
       setLoading(true)
       fetchRecu(e.value, (error: string) => {
         setLoading(false)
@@ -36,7 +37,7 @@ export default function CodeScanner({ fetchRecu }: any) {
 
   return (
     <Box>
-      <NumberFormat format="######" mask="_" value={value} onValueChange={handleChange} autoFocus sx={{ background: 'white', borderRadius: '8px', width: '400px' }} fullWidth customInput={TextField} 
+      <NumberFormat format="##############" mask="_" value={value} onValueChange={handleChange} autoFocus sx={{ background: 'white', borderRadius: '8px', width: '400px' }} fullWidth customInput={TextField} 
       placeholder={intl.formatMessage({id: 'placeholder_scan'})} />
       {
         loading ?

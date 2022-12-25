@@ -81,9 +81,9 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
     print: handlePrint,
   });
 
-  
+
   useEffect(() => {
-    if(prevState){
+    if (prevState) {
       setPrintId(spectatorInfo.printId)
       setPrinting(true)
     }
@@ -101,19 +101,19 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
       setMotif("")
       setTryAgain(false)
       setError(false)
-      try{
+      try {
         //@ts-ignore
-      const r = await api.get(`billet/printingAttempt/${spectatorInfo.ref}?username=${decodedToken.preferred_username}`)
-      setPrintId(r.data)
-      localStorage.setItem('spectator', JSON.stringify({
-        ...spectatorInfo,
-        printId: r.data
-      }))
-      handleTicketPrint()
-      setTimeout(() => {
-        setLoading(false)
-      }, 10000)
-      }catch(e){
+        const r = await api.get(`billet/printingAttempt/${spectatorInfo.ref}?username=${decodedToken.preferred_username}`)
+        setPrintId(r.data)
+        localStorage.setItem('spectator', JSON.stringify({
+          ...spectatorInfo,
+          printId: r.data
+        }))
+        handleTicketPrint()
+        setTimeout(() => {
+          setLoading(false)
+        }, 10000)
+      } catch (e) {
         setPrinting(false)
         setLoading(false)
         setOpen(true)
@@ -155,9 +155,13 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
       if (motif) {
         printTicket(true)
       }
-    }).catch(() => {
+    }).catch((e) => {
       setLoading(false)
-      setOpen(true)
+      if (e.response?.data?.errorMessage === 'TICKET_ALREADY_PRINTED') {
+        if (callback) callback()
+      } else {
+        setOpen(true)
+      }
     })
   }
 
@@ -185,7 +189,7 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
                       </Grid>
                     </Grid> : <Box>
                       <Typography variant="h6">
-                       <div dangerouslySetInnerHTML={{__html:  intl.formatMessage({id: 'printing_confirm'})}}></div>
+                        <div dangerouslySetInnerHTML={{ __html: intl.formatMessage({ id: 'printing_confirm' }) }}></div>
                       </Typography>
                       {
                         tryAgain ?
@@ -239,6 +243,14 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
                     <strong> <FormattedMessage id="form_lastname" /> : </strong>
                     {spectatorInfo.lastnameBilletHolder}
                   </Typography>
+                  {
+                    spectatorInfo.accompagnateur ?
+                      <Typography variant="h6">
+                        <strong> <FormattedMessage id="form_accompagnateur" /> : </strong>
+                        {spectatorInfo.accompagnateur}
+                      </Typography> : null
+                  }
+
                   <Typography variant="h6">
                     <strong><FormattedMessage id="form_firstname" /> : </strong>
                     {spectatorInfo.firstnameBilletHolder}
@@ -266,7 +278,7 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
                         !printing ?
                           <Button
                             sx={{ color: 'black' }}
-                            startIcon={i18n === 'ar' ? <ArrowForwardIosIcon /> :  <ArrowBackIosIcon />}
+                            startIcon={i18n === 'ar' ? <ArrowForwardIosIcon /> : <ArrowBackIosIcon />}
                             onClick={() => setSpectatorInfo(null)}
                           >
                             <FormattedMessage id="buttons_return" />
