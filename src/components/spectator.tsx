@@ -33,6 +33,9 @@ import { TransitionProps } from "@mui/material/transitions";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
+var refTicket: any = null
+
+
 export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }: any) {
   const ticketRef = createRef();
   const [printing, setPrinting] = useState(false)
@@ -44,6 +47,7 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
   const { keycloak } = useKeycloak()
   const intl = useIntl();
   const [open, setOpen] = useState(false)
+  const [confirmLoading, setConfirmLoading] = useState(false)
   const [transition, setTransition] = useState<
     React.ComponentType<TransitionProps> | undefined
   >(undefined);
@@ -61,7 +65,6 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
       window.electronAPI.printComponent(url, (response: AnyAaaaRecord) => {
         console.log("Main: ", response);
       });
-      //console.log('Main: ', data);
     });
   };
 
@@ -70,7 +73,6 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
   };
 
 
-  var refTicket: any = null
   const handleTicketPrint = useReactToPrint({
     //@ts-ignore
     content: () => refTicket,
@@ -92,7 +94,9 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
     } else if (!skip && tryAgain && motif) {
       confirmPrinting(false)
     } else {
-      refTicket = ticketRef.current
+      if (ticketRef.current) {
+        refTicket = ticketRef.current
+      }
       setPrinting(true)
       setLoading(true)
       setMotif("")
@@ -137,8 +141,12 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
     setTryAgain(true)
   }
 
-  const confirmPrinting = async  (sucess: boolean, callback?: Function) => {
-    setLoading(true)
+  const confirmPrinting = async (sucess: boolean, callback?: Function) => {
+    if(sucess){
+      setConfirmLoading(true)
+    }else{
+      setLoading(true)
+    }
     let payload = {
       resultatImpression: sucess ? "SUCCES" : 'ECHOUE',
       //@ts-ignore
@@ -150,16 +158,24 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
       //@ts-ignore
       payload["motifEchec"] = motif
     }
-    try{
-      await  api.post(`billet/printingResult`, payload)
-      setLoading(false)
+    try {
+      await api.post(`billet/printingResult`, payload)
+      if(sucess){
+        setConfirmLoading(false)
+      }else{
+        setLoading(false)
+      }
       setTryAgain(false)
       if (callback) callback()
       if (motif) {
         printTicket(true)
       }
-    }catch(e: any){
-      setLoading(false)
+    } catch (e: any) {
+      if(sucess){
+        setConfirmLoading(false)
+      }else{
+        setLoading(false)
+      }
       if (e.response?.data?.errorMessage === 'TICKET_ALREADY_PRINTED') {
         if (callback) callback()
       } else {
@@ -181,6 +197,20 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
               printing ?
                 <CardContent>
                   {
+                    confirmLoading ?
+                    <Grid container flexDirection={"column"} justifyContent="center" sx={{ textAlign: 'center', py: 5 }}>
+                      <Grid item>
+                        <CircularProgress />
+                      </Grid>
+                      <Grid item>
+                        <Typography variant="body1">
+                          <FormattedMessage id="is_confirming" />
+                        </Typography>
+                      </Grid>
+                    </Grid>
+                    : null
+                  }
+                  {
                     loading ? <Grid container flexDirection={"column"} justifyContent="center" sx={{ textAlign: 'center', py: 5 }}>
                       <Grid item>
                         <CircularProgress />
@@ -190,7 +220,7 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
                           <FormattedMessage id="is_printing" />
                         </Typography>
                       </Grid>
-                    </Grid> : <Box>
+                    </Grid> : !confirmLoading ? <Box>
                       <Typography variant="h6">
                         <div dangerouslySetInnerHTML={{ __html: intl.formatMessage({ id: 'printing_confirm' }) }}></div>
                       </Typography>
@@ -230,7 +260,7 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
                           </FormControl>
                           : null
                       }
-                    </Box>
+                    </Box> : null
                   }
                 </CardContent>
                 :
@@ -320,7 +350,7 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
                           startIcon={<DoneIcon />}
                           onClick={done}
                           variant="contained"
-                          disabled={loading || tryAgain}
+                          disabled={confirmLoading || loading || tryAgain}
                         >
                           <FormattedMessage id="buttons_confirm" />
                         </Button>
@@ -335,7 +365,11 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
         ) : null}
 
       </Box>
-      <Ticket ref={ticketRef} spectatorInfo={spectatorInfo}></Ticket>
+      {
+        spectatorInfo ?
+          <Ticket ref={ticketRef} spectatorInfo={spectatorInfo}></Ticket>
+          : null
+      }
       <Snackbar
         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         open={open}
