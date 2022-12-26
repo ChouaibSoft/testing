@@ -90,9 +90,7 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
     if (!skip && tryAgain && !motif) {
       setError(true)
     } else if (!skip && tryAgain && motif) {
-      confirmPrinting(false, () => {
-        clear()
-      })
+      confirmPrinting(false)
     } else {
       refTicket = ticketRef.current
       setPrinting(true)
