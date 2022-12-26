@@ -22,6 +22,7 @@
     "TICKET_ALREADY_PRINTED": "Ce billet est déjà imprimé",
 
     "is_printing": "Impression en cours , veuillez patienter..",
+    "is_confirming": "Confirmation de l'impression est en cours , veuillez patienter..",
     "printing_confirm": "Veuillez vérifier l'etat du ticket imprimé, s'il est valable veuillez <strong>confirmer l'impression</strong> .<br /> S'il ya un problème d'impression veuillez  le <strong>signaler</strong> et <strong>rééssayer</strong> à nouveau.",
     "motif": "Motif d'échec",
     "required": "Ce champ est obligatoire",

@@ -47,6 +47,7 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
   const { keycloak } = useKeycloak()
   const intl = useIntl();
   const [open, setOpen] = useState(false)
+  const [confirmLoading, setConfirmLoading] = useState(false)
   const [transition, setTransition] = useState<
     React.ComponentType<TransitionProps> | undefined
   >(undefined);
@@ -143,7 +144,11 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
   }
 
   const confirmPrinting = async (sucess: boolean, callback?: Function) => {
-    setLoading(true)
+    if(sucess){
+      setConfirmLoading(true)
+    }else{
+      setLoading(true)
+    }
     let payload = {
       resultatImpression: sucess ? "SUCCES" : 'ECHOUE',
       //@ts-ignore
@@ -157,14 +162,22 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
     }
     try {
       await api.post(`billet/printingResult`, payload)
-      setLoading(false)
+      if(sucess){
+        setConfirmLoading(false)
+      }else{
+        setLoading(false)
+      }
       setTryAgain(false)
       if (callback) callback()
       if (motif) {
         printTicket(true)
       }
     } catch (e: any) {
-      setLoading(false)
+      if(sucess){
+        setConfirmLoading(false)
+      }else{
+        setLoading(false)
+      }
       if (e.response?.data?.errorMessage === 'TICKET_ALREADY_PRINTED') {
         if (callback) callback()
       } else {
@@ -186,6 +199,20 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
               printing ?
                 <CardContent>
                   {
+                    confirmLoading ?
+                    <Grid container flexDirection={"column"} justifyContent="center" sx={{ textAlign: 'center', py: 5 }}>
+                      <Grid item>
+                        <CircularProgress />
+                      </Grid>
+                      <Grid item>
+                        <Typography variant="body1">
+                          <FormattedMessage id="is_confirming" />
+                        </Typography>
+                      </Grid>
+                    </Grid>
+                    : null
+                  }
+                  {
                     loading ? <Grid container flexDirection={"column"} justifyContent="center" sx={{ textAlign: 'center', py: 5 }}>
                       <Grid item>
                         <CircularProgress />
@@ -195,7 +222,7 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
                           <FormattedMessage id="is_printing" />
                         </Typography>
                       </Grid>
-                    </Grid> : <Box>
+                    </Grid> : !confirmLoading ? <Box>
                       <Typography variant="h6">
                         <div dangerouslySetInnerHTML={{ __html: intl.formatMessage({ id: 'printing_confirm' }) }}></div>
                       </Typography>
@@ -235,7 +262,7 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
                           </FormControl>
                           : null
                       }
-                    </Box>
+                    </Box> : null
                   }
                 </CardContent>
                 :
@@ -326,7 +353,7 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
                           startIcon={<DoneIcon />}
                           onClick={done}
                           variant="contained"
-                          disabled={loading || tryAgain}
+                          disabled={confirmLoading || loading || tryAgain}
                         >
                           <FormattedMessage id="buttons_confirm" />
                         </Button>
