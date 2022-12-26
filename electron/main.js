@@ -11,8 +11,8 @@ function createWindow () {
     slashes: true,
   });
   mainWindow = new BrowserWindow({
-    width: 1000,
-    height: 600,
+    width: 1500,
+    height: 1200,
     // autoHideMenuBar: true,
     icon: __dirname + '/favicon.ico',
     webPreferences: {
@@ -32,7 +32,7 @@ function createWindow () {
       console.log(filter)
       if(url.includes('#state')){
         const params = url.slice(url.indexOf('#'));
-        mainWindow.loadURL('http://localhost:3000' + params );
+        mainWindow.loadURL( 'file://' + path.join(__dirname, '../index.html' + params) );
       }
   
     });
@@ -67,9 +67,9 @@ app.on('activate', function () {
 // List of all options at -
 // https://www.electronjs.org/docs/latest/api/web-contents#contentsprintoptions-callback
 const printOptions = {
-  silent: false,
-  printBackground: true,
-  // device: 'Kyocera ECOSYS M2135dn',
+  silent: true,
+  printBackground: false,
+  device: 'Kyocera ECOSYS M21dn',
   color: true,
   margin: {
     marginType: "custom",

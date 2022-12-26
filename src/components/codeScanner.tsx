@@ -40,7 +40,7 @@ export default function CodeScanner({ fetchRecu }: any) {
       placeholder={intl.formatMessage({id: 'placeholder_scan'})} />
       {
         loading ?
-          <CircularProgress sx={{ position: 'relative', left: '-3rem', top: '.8rem' }} />
+          <CircularProgress sx={{ position: 'relative', left: '-3rem', top: '.5rem' }} />
           : null
       }
       {
