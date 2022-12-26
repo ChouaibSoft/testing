@@ -33,6 +33,9 @@ import { TransitionProps } from "@mui/material/transitions";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
+var refTicket: any = null
+
+
 export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }: any) {
   const ticketRef = createRef();
   const [printing, setPrinting] = useState(false)
@@ -59,11 +62,10 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
       const blob = new Blob([data], { type: "text/html;charset=utf-8;" });
       const url = URL.createObjectURL(blob);
 
-      //@ts-ignore
+      // @ts-ignore
       window.electronAPI.printComponent(url, (response: AnyAaaaRecord) => {
         console.log("Main: ", response);
       });
-      //console.log('Main: ', data);
     });
   };
 
@@ -72,7 +74,6 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
   };
 
 
-  var refTicket: any = null
   const handleTicketPrint = useReactToPrint({
     //@ts-ignore
     content: () => refTicket,
@@ -94,7 +95,9 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
     } else if (!skip && tryAgain && motif) {
       confirmPrinting(false)
     } else {
-      refTicket = ticketRef.current
+      if (ticketRef.current) {
+        refTicket = ticketRef.current
+      }
       setPrinting(true)
       setLoading(true)
       setMotif("")
@@ -139,7 +142,7 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
     setTryAgain(true)
   }
 
-  const confirmPrinting = async  (sucess: boolean, callback?: Function) => {
+  const confirmPrinting = async (sucess: boolean, callback?: Function) => {
     setLoading(true)
     let payload = {
       resultatImpression: sucess ? "SUCCES" : 'ECHOUE',
@@ -152,15 +155,15 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
       //@ts-ignore
       payload["motifEchec"] = motif
     }
-    try{
-      await  api.post(`billet/printingResult`, payload)
+    try {
+      await api.post(`billet/printingResult`, payload)
       setLoading(false)
       setTryAgain(false)
       if (callback) callback()
       if (motif) {
         printTicket(true)
       }
-    }catch(e: any){
+    } catch (e: any) {
       setLoading(false)
       if (e.response?.data?.errorMessage === 'TICKET_ALREADY_PRINTED') {
         if (callback) callback()
@@ -338,7 +341,11 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
         ) : null}
 
       </Box>
-      <Ticket ref={ticketRef} spectatorInfo={spectatorInfo}></Ticket>
+      {
+        spectatorInfo ?
+          <Ticket ref={ticketRef} spectatorInfo={spectatorInfo}></Ticket>
+          : null
+      }
       <Snackbar
         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         open={open}
