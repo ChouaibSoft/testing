@@ -55,6 +55,7 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
     return new Promise(() => {
       console.log("forwarding print request to the main process...");
       const data = target.contentWindow.document.documentElement.outerHTML;
+      console.log(data);
       const blob = new Blob([data], { type: "text/html;charset=utf-8;" });
       const url = URL.createObjectURL(blob);
       //@ts-ignore
@@ -90,7 +91,9 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
     if (!skip && tryAgain && !motif) {
       setError(true)
     } else if (!skip && tryAgain && motif) {
-      confirmPrinting(false)
+      confirmPrinting(false, () => {
+        clear()
+      })
     } else {
       refTicket = ticketRef.current
       setPrinting(true)
@@ -120,20 +123,24 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
 
   const done = () => {
     confirmPrinting(true, () => {
-      setSpectatorInfo(null)
-      setPrinting(false)
-      setTryAgain(false)
-      setError(false)
-      refTicket = null;
-      localStorage.removeItem('spectator')
+      clear()
     })
+  }
+
+  const clear = () => {
+    setSpectatorInfo(null)
+    setPrinting(false)
+    setTryAgain(false)
+    setError(false)
+    refTicket = null;
+    localStorage.removeItem('spectator')
   }
 
   const printAgain = () => {
     setTryAgain(true)
   }
 
-  const confirmPrinting = (sucess: boolean, callback?: Function) => {
+  const confirmPrinting = async  (sucess: boolean, callback?: Function) => {
     let payload = {
       resultatImpression: sucess ? "SUCCES" : 'ECHOUE',
       //@ts-ignore
@@ -145,21 +152,22 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
       //@ts-ignore
       payload["motifEchec"] = motif
     }
-    api.post(`billet/printingResult`, payload).then(() => {
+    try{
+      await  api.post(`billet/printingResult`, payload)
       setLoading(false)
       setTryAgain(false)
       if (callback) callback()
       if (motif) {
         printTicket(true)
       }
-    }).catch((e) => {
+    }catch(e: any){
       setLoading(false)
       if (e.response?.data?.errorMessage === 'TICKET_ALREADY_PRINTED') {
         if (callback) callback()
       } else {
         setOpen(true)
       }
-    })
+    }
   }
 
   return (

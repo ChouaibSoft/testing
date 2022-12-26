@@ -15,7 +15,7 @@ export default function Footer() {
       <Button onClick={changeLang} variant='text'>
         <Typography variant='caption'>
         {
-          i18n === 'ar' ? 'Fraçais' : 'عربية'
+          i18n === 'ar' ? 'Français' : 'عربية'
         }
         </Typography>
       </Button>

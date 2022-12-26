@@ -64,11 +64,12 @@ export function App() {
       keycloak.updateToken(3600).then(() => {
         api.interceptors.request.use(function (config) {
           //@ts-ignore
-          config.headers.Authorization = keycloak.token;
+          config.headers.Authorization = `Bearer ${keycloak.token}`;
           return config;
         });
       });
     };
+
     keycloak.onAuthRefreshError = () => {
       keycloak.login();
     };
@@ -95,7 +96,6 @@ export function App() {
       <RTLLayout>
         <Locales>
           <Home spectatorInfo={spectatorInfo} fetchRecu={fetchRecu}></Home>
-
           <Spectator spectatorInfo={spectatorInfo} prevState={prevState}  setSpectatorInfo={setSpectatorInfo}></Spectator>
           <img className="app__bg" src={bg} alt="background image" />
           <div className="app__overlay"></div>
