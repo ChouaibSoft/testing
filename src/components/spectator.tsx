@@ -56,7 +56,6 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
       console.log("forwarding print request to the main process...");
 
       const data = target.contentWindow.document.documentElement.outerHTML;
-      console.log(data);
       const blob = new Blob([data], { type: "text/html;charset=utf-8;" });
       const url = URL.createObjectURL(blob);
 
@@ -141,6 +140,7 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
   }
 
   const confirmPrinting = async  (sucess: boolean, callback?: Function) => {
+    setLoading(true)
     let payload = {
       resultatImpression: sucess ? "SUCCES" : 'ECHOUE',
       //@ts-ignore
