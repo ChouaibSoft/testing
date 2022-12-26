@@ -55,7 +55,6 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
     return new Promise(() => {
       console.log("forwarding print request to the main process...");
       const data = target.contentWindow.document.documentElement.outerHTML;
-      console.log(data);
       const blob = new Blob([data], { type: "text/html;charset=utf-8;" });
       const url = URL.createObjectURL(blob);
       //@ts-ignore

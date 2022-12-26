@@ -68,8 +68,8 @@ app.on('activate', function () {
 // https://www.electronjs.org/docs/latest/api/web-contents#contentsprintoptions-callback
 const printOptions = {
   silent: true,
-  printBackground: true,
-  device: 'Kyocera ECOSYS M2135dn',
+  printBackground: false,
+  device: 'Kyocera ECOSYS M21dn',
   color: true,
   margin: {
     marginType: "custom",

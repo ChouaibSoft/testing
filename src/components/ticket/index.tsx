@@ -10,7 +10,7 @@ export const Ticket = forwardRef((props: any, ref) =>
     (
         //@ts-ignore
         <div className="ticket" ref={ref}>
-            <img src={"https://firebasestorage.googleapis.com/v0/b/portfolio-dc68f.appspot.com/o/tmp.jpg?alt=media&token=09492d22-2db8-475d-baae-e7f80955dae9"} alt="ticket" />
+            {/* <img src={"https://firebasestorage.googleapis.com/v0/b/portfolio-dc68f.appspot.com/o/tmp.jpg?alt=media&token=09492d22-2db8-475d-baae-e7f80955dae9"} alt="ticket" /> */}
             <div className="ticket__content">
                 <div className="wrapper">
                     <div className="content">
