@@ -13,7 +13,6 @@ function createWindow () {
   mainWindow = new BrowserWindow({
     width: 1500,
     height: 1200,
-    fullscreen: true,
     // autoHideMenuBar: true,
     icon: __dirname + '/favicon.ico',
     webPreferences: {
@@ -68,9 +67,9 @@ app.on('activate', function () {
 // List of all options at -
 // https://www.electronjs.org/docs/latest/api/web-contents#contentsprintoptions-callback
 const printOptions = {
-  silent: false,
+  silent: true,
   printBackground: true,
-  // device: 'Kyocera ECOSYS M2135dn',
+  device: 'Kyocera ECOSYS M2135dn',
   color: true,
   margin: {
     marginType: "custom",
