@@ -71,6 +71,10 @@ const printOptions = {
   printBackground: false,
   device: 'Kyocera ECOSYS M21dn',
   color: true,
+  pageRanges: {
+    from: 0,
+    to: 0
+  },
   margin: {
     marginType: "custom",
     top: 0,
@@ -82,8 +86,6 @@ const printOptions = {
   pagesPerSheet: 1,
   collate: false,
   copies: 1,
-  header: "Page header",
-  footer: "Page footer",
   pageSize :  'A5'
 };
 

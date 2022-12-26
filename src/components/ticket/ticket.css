@@ -1,11 +1,13 @@
+
 .ticket{
     position: relative;
     width: 210mm;
     height: 148mm;
     font-weight: bold;
-    top: 0;
     z-index: 15;
     direction: ltr;
+    top: 0;
+    overflow: hidden;
 }
 .ticket img{
     position: absolute;
@@ -44,6 +46,7 @@
     position: absolute;
     top: 35.3%;
     left: 89.3%;
+    transform: rotate(90deg);
 }
 .ticket_qr_code-replicate{
     position: absolute;

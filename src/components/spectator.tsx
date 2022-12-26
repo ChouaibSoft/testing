@@ -138,6 +138,7 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
   }
 
   const confirmPrinting = async  (sucess: boolean, callback?: Function) => {
+    setLoading(true)
     let payload = {
       resultatImpression: sucess ? "SUCCES" : 'ECHOUE',
       //@ts-ignore
