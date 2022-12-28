@@ -1,6 +1,6 @@
 {
   "name": "tadkirati-gichet",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "private": true,
   "main": "electron/main.js",
   "author": "eadn",
@@ -9,6 +9,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@fontsource/original-surfer": "^4.5.10",
     "@fontsource/poppins": "^4.5.10",
     "@fontsource/tajawal": "^4.5.9",
     "@mui/icons-material": "^5.10.16",
@@ -54,9 +55,8 @@
     "start-electron": "set ELECTRON_START_URL=http://localhost:3000 && electron .",
     "build-electron": "cp -r electron/. build/electron && cp -r src/shared/. build/src/shared",
     "build-electron-win": "robocopy electron build/electron /S",
-    "package": "electron-builder build  --win -c.extraMetadata.main=build/electron/main.js  --publish never",
-    "build-desktop": "yarn run clean-win && yarn run build && yarn run build-electron-win && yarn run package",
-    "deploy": "electron-builder build --win --publish always"
+    "package": "electron-builder build  --win -c.extraMetadata.main=build/electron/main.js  --publish always",
+    "build-desktop": "yarn run clean-win && yarn run build && yarn run build-electron-win && yarn run package"
   },
   "eslintConfig": {
     "extends": [
@@ -68,7 +68,14 @@
     "productName": "Tadkirati Guichet",
     "copyright": "Copyright © 2023 ${author}",
     "win": {
-      "icon": "./electron/favicon.png"
+      "icon": "./electron/favicon.png",
+      "publish": {
+        "provider": "github",
+        "owner": "ChouaibSoft",
+        "repo": "testing",
+        "private": true,
+        "token": "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"
+      }
     },
     "files": [
       "build/**/*",
@@ -81,8 +88,8 @@
     }
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://scm.eadn.dz/chouaib.lokbani/DIGI_TICKET/DIGI_TICKET_DESKTOP.git"
+    "type": "git",
+    "url": "https://scm.eadn.dz/chouaib.lokbani/DIGI_TICKET/DIGI_TICKET_DESKTOP.git"
   },
   "browserslist": {
     "production": [

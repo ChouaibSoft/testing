@@ -21,6 +21,8 @@
     "TADKIRATI_TICKET_DOES_NOT_EXIST": "Le billet n'existe pas !",
     "TICKET_ALREADY_PRINTED": "Ce billet est déjà imprimé",
 
+    "RECU_NOT_IN_ETABLISSEMENT": "Le billet n'existe pas dans cette point de retrait !",
+
     "is_printing": "Impression en cours , veuillez patienter..",
     "is_confirming": "Confirmation de l'impression est en cours , veuillez patienter..",
     "printing_confirm": "Veuillez vérifier l'etat du ticket imprimé, s'il est valable veuillez <strong>confirmer l'impression</strong> .<br /> S'il ya un problème d'impression veuillez  le <strong>signaler</strong> et <strong>rééssayer</strong> à nouveau.",

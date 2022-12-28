@@ -18,7 +18,7 @@ export const Ticket = forwardRef((props: any, ref) =>
                             <strong>
                                 Date
                             </strong>
-                            <strong>
+                            <strong className="arabic">
                                 التاريخ
                             </strong>
                         </div>
@@ -36,99 +36,17 @@ export const Ticket = forwardRef((props: any, ref) =>
                             <strong>
                                 Gates open
                             </strong>
-                            <strong>
+                            <strong className="arabic">
                                 موعد فتح الأبواب
                             </strong>
                         </div>
                         <div>
-                            <p>
+                            <p className="number">
                                 <Moment format="HH:mm">{new Date(props?.spectatorInfo?.dateOuverturePorte?.replace(
                                     "[UTC]",
                                     ""
                                 ))}</Moment>
                             </p>
-                        </div>
-                    </div>
-                    <div className="content">
-                        <div>
-                            <strong>
-                                Price
-                            </strong>
-                            <strong>
-                                السعر
-                            </strong>
-                        </div>
-                        <div>
-                            <p>{props?.spectatorInfo?.prix} DZD</p>
-                        </div>
-                    </div>
-                    <div className="content">
-                        <div>
-                            <strong>
-                                Stadium
-                            </strong>
-                            <strong>
-                                الملعب
-                            </strong>
-                        </div>
-                        <div>
-                            <p>{props?.spectatorInfo?.infrastructure}
-                                oran olympic
-
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="wrapper">
-                    <div className="content">
-                        <div>
-                            <strong>
-                                Match
-                            </strong>
-                            <strong>
-                                المباراة
-                            </strong>
-                        </div>
-                        <div>
-                            {
-                                props?.spectatorInfo?.match.includes('\n') ?
-                                    <div className="match">
-                                        <p>{props?.spectatorInfo?.match?.split('\n')[0]}</p>
-                                        <p>{props?.spectatorInfo?.match?.split('\n')[1]}</p>
-                                    </div>
-                                    : <div className="match">
-                                        <p>{props?.spectatorInfo?.match}</p>
-                                    </div>
-                            }
-
-                        </div>
-                    </div>
-                    <div className="content">
-                        <div>
-                            <strong>
-                                Kiff-of time
-                            </strong>
-                            <strong>
-                                صافرة البداية
-                            </strong>
-                        </div>
-                        <div>
-                            <p>
-                                <Moment format="HH:mm">{new Date(props?.spectatorInfo?.dateMatch1?.replace(
-                                    "[UTC]",
-                                    ""
-                                ))}</Moment>
-                            </p>
-                            {
-                                props?.spectatorInfo?.dateMatch2 ?
-                                    <p>
-                                        <Moment format="HH:mm">{new Date(props?.spectatorInfo?.dateMatch2?.replace(
-                                            "[UTC]",
-                                            ""
-                                        ))}</Moment>
-                                    </p> : null
-                            }
                         </div>
                     </div>
                     <div className="content">
@@ -146,18 +64,100 @@ export const Ticket = forwardRef((props: any, ref) =>
                             </p>
                         </div>
                     </div>
+                    {
+                        props?.spectatorInfo?.accompagnateur ?
+                            <div className="content">
+                                <div>
+                                    <strong>
+                                        accompanist
+                                    </strong>
+                                    <strong className="arabic">
+                                        المرافق
+                                    </strong>
+                                </div>
+                                <div>
+                                    <p>
+                                        {`${props?.spectatorInfo?.accompagnateur}`}
+                                    </p>
+                                </div>
+                            </div> : null
+                    }
+                </div>
+
+                <div className="wrapper">
                     <div className="content">
                         <div>
                             <strong>
-                                accompanist
+                                Kicf-OFF TIME
                             </strong>
-                            <strong>
-                                المرافق
+                            <strong className="arabic">
+                                صافرة البداية
                             </strong>
                         </div>
+                    </div>
+                    <div className="content">
                         <div>
-                            <p>
-                                {`${props?.spectatorInfo?.accompagnateur}`}
+                            <strong>
+                                MATCH
+                            </strong>
+                            <p className="teams">
+                                {props?.spectatorInfo?.match?.split('\n')[0]?.replace('-', 'VS')}
+                            </p>
+                        </div>
+                        <div>
+                            <p className="number kick-off">
+                                <Moment format="HH:mm">{new Date(props?.spectatorInfo?.dateMatch1?.replace(
+                                    "[UTC]",
+                                    ""
+                                ))}</Moment>
+                            </p>
+                        </div>
+                        <div>
+                            <strong>
+                                المباراة
+                            </strong>
+                            <p className="teams teams-ar">
+                                {props?.spectatorInfo?.matchAr?.split('\n')[0]}
+                            </p>
+                        </div>
+                    </div>
+                    {
+                        props?.spectatorInfo?.match?.includes('\n') ?
+                            <div className="content">
+                                <div>
+                                    <p className="teams">
+                                        {props?.spectatorInfo?.match?.split('\n')[1]?.replace('-', 'VS')}
+                                    </p>
+                                </div>
+                                <div>
+                                    <p className="number kick-off">
+                                        <Moment format="HH:mm">{new Date(props?.spectatorInfo?.dateMatch2?.replace(
+                                            "[UTC]",
+                                            ""
+                                        ))}</Moment>
+                                    </p>
+                                </div>
+                                <div>
+
+                                    <p className="teams teams-ar">
+                                        {props?.spectatorInfo?.matchAr?.split('\n')[1]}
+                                    </p>
+                                </div>
+                            </div> : null
+                    }
+
+                    <div className="content">
+                        <div>
+                            <p className="stadium">
+                                <strong>Stadium </strong>{"  "}
+                                {props?.spectatorInfo?.infrastructure}
+                            </p>
+                        </div>
+                        <div>
+                            <p className="stadium arabic">
+                                <strong>الملعب </strong> {"  "}
+
+                                {props?.spectatorInfo?.infrastructureAr}
                             </p>
                         </div>
                     </div>
@@ -170,7 +170,7 @@ export const Ticket = forwardRef((props: any, ref) =>
                             <strong>
                                 Category
                             </strong>
-                            <strong>
+                            <strong className="arabic">
                                 الفئة
                             </strong>
                         </div>
@@ -183,7 +183,7 @@ export const Ticket = forwardRef((props: any, ref) =>
                             <strong>
                                 Gate
                             </strong>
-                            <strong>
+                            <strong className="arabic">
                                 البوابة
                             </strong>
                         </div>
@@ -200,7 +200,7 @@ export const Ticket = forwardRef((props: any, ref) =>
                             <strong>
                                 Sector
                             </strong>
-                            <strong>
+                            <strong className="arabic">
                                 المدرج
                             </strong>
                         </div>
@@ -213,7 +213,7 @@ export const Ticket = forwardRef((props: any, ref) =>
                             <strong>
                                 Seat
                             </strong>
-                            <strong>
+                            <strong className="arabic">
                                 المقعد
                             </strong>
                         </div>
@@ -221,17 +221,30 @@ export const Ticket = forwardRef((props: any, ref) =>
                             <p>/</p>
                         </div>
                     </div>
+                    <div className="content">
+                        <div>
+                            <strong>
+                                Price
+                            </strong>
+                            <strong>
+                                السعر
+                            </strong>
+                        </div>
+                        <div>
+                            <p className="">{props?.spectatorInfo?.prix} DZD</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div className="ticket__content-replicate">
+            <div className="ticket__content ticket__content-replicate">
                 <div className="wrapper">
                     <div className="content">
                         <div>
                             <strong>
                                 Date
                             </strong>
-                            <strong>
+                            <strong className="arabic">
                                 التاريخ
                             </strong>
                         </div>
@@ -249,96 +262,17 @@ export const Ticket = forwardRef((props: any, ref) =>
                             <strong>
                                 Gates open
                             </strong>
-                            <strong>
+                            <strong className="arabic">
                                 موعد فتح الأبواب
                             </strong>
                         </div>
                         <div>
-                            <p>
+                            <p className="number">
                                 <Moment format="HH:mm">{new Date(props?.spectatorInfo?.dateOuverturePorte?.replace(
                                     "[UTC]",
                                     ""
                                 ))}</Moment>
                             </p>
-                        </div>
-                    </div>
-                    <div className="content">
-                        <div>
-                            <strong>
-                                Price
-                            </strong>
-                            <strong>
-                                السعر
-                            </strong>
-                        </div>
-                        <div>
-                            <p>{props?.spectatorInfo?.prix} DZD</p>
-                        </div>
-                    </div>
-                    <div className="content">
-                        <div>
-                            <strong>
-                                Stadium
-                            </strong>
-                            <strong>
-                                الملعب
-                            </strong>
-                        </div>
-                        <div>
-                            <p>{props?.spectatorInfo?.infrastructure}</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="wrapper">
-                    <div className="content">
-                        <div>
-                            <strong>
-                                Match
-                            </strong>
-                            <strong>
-                                المباراة
-                            </strong>
-                        </div>
-                        <div>
-                            {
-                                props?.spectatorInfo?.match.includes('\n') ?
-                                    <div className="match">
-                                        <p>{props?.spectatorInfo?.match?.split('\n')[0]}</p>
-                                        <p>{props?.spectatorInfo?.match?.split('\n')[1]}</p>
-                                    </div>
-                                    : <div className="match">
-                                        <p>{props?.spectatorInfo?.match}</p>
-                                    </div>
-                            }
-
-                        </div>
-                    </div>
-                    <div className="content">
-                        <div>
-                            <strong>
-                                Kiff-of time
-                            </strong>
-                            <strong>
-                                صافرة البداية
-                            </strong>
-                        </div>
-                        <div>
-                            <p>
-                                <Moment format="HH:mm">{new Date(props?.spectatorInfo?.dateMatch1?.replace(
-                                    "[UTC]",
-                                    ""
-                                ))}</Moment>
-                            </p>
-                            {
-                                props?.spectatorInfo?.dateMatch2 ?
-                                    <p>
-                                        <Moment format="HH:mm">{new Date(props?.spectatorInfo?.dateMatch2?.replace(
-                                            "[UTC]",
-                                            ""
-                                        ))}</Moment>
-                                    </p> : null
-                            }
                         </div>
                     </div>
                     <div className="content">
@@ -356,18 +290,99 @@ export const Ticket = forwardRef((props: any, ref) =>
                             </p>
                         </div>
                     </div>
+                    {
+                        props?.spectatorInfo?.accompagnateur ?
+                            <div className="content">
+                                <div>
+                                    <strong>
+                                        accompanist
+                                    </strong>
+                                    <strong className="arabic">
+                                        المرافق
+                                    </strong>
+                                </div>
+                                <div>
+                                    <p>
+                                        {`${props?.spectatorInfo?.accompagnateur}`}
+                                    </p>
+                                </div>
+                            </div> : null
+                    }
+                </div>
+
+                <div className="wrapper">
                     <div className="content">
                         <div>
                             <strong>
-                                accompanist
+                                Kicf-OFF TIME
                             </strong>
-                            <strong>
-                                المرافق
+                            <strong className="arabic">
+                                صافرة البداية
                             </strong>
                         </div>
+                    </div>
+                    <div className="content">
                         <div>
-                            <p>
-                                {`${props?.spectatorInfo?.accompagnateur}`}
+                            <strong>
+                                MATCH
+                            </strong>
+                            <p className="teams">
+                                {props?.spectatorInfo?.match?.split('\n')[0]?.replace('-', 'VS')}
+                            </p>
+                        </div>
+                        <div>
+                            <p className="number kick-off">
+                                <Moment format="HH:mm">{new Date(props?.spectatorInfo?.dateMatch1?.replace(
+                                    "[UTC]",
+                                    ""
+                                ))}</Moment>
+                            </p>
+                        </div>
+                        <div>
+                            <strong>
+                                المباراة
+                            </strong>
+                            <p className="teams teams-ar">
+                                {props?.spectatorInfo?.matchAr?.split('\n')[0]}
+                            </p>
+                        </div>
+                    </div>
+                    {
+                        props?.spectatorInfo?.match?.includes('\n') ?
+                            <div className="content">
+                                <div>
+                                    <p className="teams">
+                                        {props?.spectatorInfo?.match?.split('\n')[1]?.replace('-', 'VS')}
+                                    </p>
+                                </div>
+                                <div>
+                                    <p className="number kick-off">
+                                        <Moment format="HH:mm">{new Date(props?.spectatorInfo?.dateMatch2?.replace(
+                                            "[UTC]",
+                                            ""
+                                        ))}</Moment>
+                                    </p>
+                                </div>
+                                <div>
+                                    <p className="teams teams-ar">
+                                        {props?.spectatorInfo?.matchAr?.split('\n')[1]}
+                                    </p>
+                                </div>
+                            </div> : null
+                    }
+
+                    <div className="content">
+                        <div>
+                            <p className="stadium">
+                                <strong>Stadium </strong>{"  "}
+                                {props?.spectatorInfo?.infrastructure}
+                            </p>
+                        </div>
+                        <div>
+                            <p className="stadium arabic">
+                                <strong>الملعب </strong> {"  "}
+
+                                {props?.spectatorInfo?.infrastructureAr}
                             </p>
                         </div>
                     </div>
@@ -380,7 +395,7 @@ export const Ticket = forwardRef((props: any, ref) =>
                             <strong>
                                 Category
                             </strong>
-                            <strong>
+                            <strong className="arabic">
                                 الفئة
                             </strong>
                         </div>
@@ -393,7 +408,7 @@ export const Ticket = forwardRef((props: any, ref) =>
                             <strong>
                                 Gate
                             </strong>
-                            <strong>
+                            <strong className="arabic">
                                 البوابة
                             </strong>
                         </div>
@@ -410,7 +425,7 @@ export const Ticket = forwardRef((props: any, ref) =>
                             <strong>
                                 Sector
                             </strong>
-                            <strong>
+                            <strong className="arabic">
                                 المدرج
                             </strong>
                         </div>
@@ -423,12 +438,25 @@ export const Ticket = forwardRef((props: any, ref) =>
                             <strong>
                                 Seat
                             </strong>
-                            <strong>
+                            <strong className="arabic">
                                 المقعد
                             </strong>
                         </div>
                         <div>
                             <p>/</p>
+                        </div>
+                    </div>
+                    <div className="content">
+                        <div>
+                            <strong>
+                                Price
+                            </strong>
+                            <strong>
+                                السعر
+                            </strong>
+                        </div>
+                        <div>
+                            <p className="">{props?.spectatorInfo?.prix} DZD</p>
                         </div>
                     </div>
                 </div>

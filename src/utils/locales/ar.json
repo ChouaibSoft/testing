@@ -23,6 +23,8 @@
     "TADKIRATI_TICKET_DOES_NOT_EXIST": "التذكرة غير موجودة!",
     "TICKET_ALREADY_PRINTED": "هذه التذكرة مطبوعة من قبل",
 
+    "RECU_NOT_IN_ETABLISSEMENT": "التذكرة غير موجودة!",
+
     "is_printing": "جاري عملية الطباعة ، الرجاء الانتظار ..",
     "is_confirming": "جاري عملية تأكيد الطباعة ، الرجاء الانتظار ..",
     "printing_confirm": "يرجى التحقق من حالة التذكرة المطبوعة ، إذا كانت صالحة يرجى <strong>تأكيد الطباعة</strong>. <br/> إذا كانت هناك مشكلة في الطباعة ، يرجى <strong>الإبلاغ عنها</strong> و<strong> المحاولة مرة أخرى</strong>.",
