@@ -53,21 +53,4 @@ font-family: 'Original Surfer';
 }
 
 
-@font-face {
-  font-family: 'Aloevera-Regular';
-  src: url('./assets/fonts/Aloevera-Regular.otf');
-}
-@font-face {
-  font-family: 'Aloevera-SemiBold';
-  src: url('./assets/fonts/Aloevera-SemiBold.otf');
-}
-
-@font-face {
-  font-family: 'MyriadArabic-Bold';
-  src: url('./assets/fonts/MyriadArabic-Bold.otf');
-}
-@font-face {
-  font-family: 'MyriadArabic--Regular';
-  src: url('./assets/fonts/MyriadArabic-Regular.otf');
-}
 
