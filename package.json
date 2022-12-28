@@ -24,6 +24,7 @@
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.9",
     "add": "^2.0.6",
+    "electron-updater": "^5.3.0",
     "jwt-decode": "^3.1.2",
     "keycloak-js": "^20.0.2",
     "moment-timezone": "^0.5.39",
@@ -54,7 +55,8 @@
     "build-electron": "cp -r electron/. build/electron && cp -r src/shared/. build/src/shared",
     "build-electron-win": "robocopy electron build/electron /S",
     "package": "electron-builder build  --win -c.extraMetadata.main=build/electron/main.js  --publish never",
-    "build-desktop": "yarn run clean-win && yarn run build && yarn run build-electron-win && yarn run package"
+    "build-desktop": "yarn run clean-win && yarn run build && yarn run build-electron-win && yarn run package",
+    "deploy": "electron-builder build --win --publish always"
   },
   "eslintConfig": {
     "extends": [
@@ -77,6 +79,10 @@
       "repo": "electron-cra-example",
       "owner": "johndyer24"
     }
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://scm.eadn.dz/chouaib.lokbani/DIGI_TICKET/DIGI_TICKET_DESKTOP.git"
   },
   "browserslist": {
     "production": [
