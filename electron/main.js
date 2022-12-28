@@ -1,6 +1,8 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const url = require('url');
+const { autoUpdater } = require('electron-updater');
+
 
 let mainWindow;
 
@@ -21,6 +23,10 @@ function createWindow () {
   });
   mainWindow.maximize()
   mainWindow.loadURL(startUrl);
+  mainWindow.once('ready-to-show', () => {
+    autoUpdater.checkForUpdatesAndNotify();
+  });
+
   const {session: {webRequest}} = mainWindow.webContents;
   const filter = {
     urls: [
@@ -45,6 +51,12 @@ function createWindow () {
 }
 
 
+autoUpdater.on('update-available', () => {
+  mainWindow.webContents.send('update_available');
+});
+autoUpdater.on('update-downloaded', () => {
+  mainWindow.webContents.send('update_downloaded');
+});
 
 app.on('ready', createWindow);
 
@@ -60,6 +72,9 @@ app.on('activate', function () {
   }
 });
 
+ipcMain.on('restart_app', () => {
+  autoUpdater.quitAndInstall();
+});
 
 
 //-------------------- print function -----------------
