@@ -19,11 +19,11 @@ export default function CodeScanner({ fetchRecu }: any) {
   >(undefined);
 
   const handleChange = (e: any) => {
-    setValue(e.value)
+    setValue(e.target.value)
     setOpen(false)
-    if (e.value.length ===  6) {
+    if (e.target.value.length ===  14) {
       setLoading(true)
-      fetchRecu(e.value, (error: string) => {
+      fetchRecu(e.target.value, (error: string) => {
         setLoading(false)
         setError(error)
         setOpen(true)
@@ -36,7 +36,7 @@ export default function CodeScanner({ fetchRecu }: any) {
 
   return (
     <Box>
-      <NumberFormat format="##############" mask="_" value={value} onValueChange={handleChange} autoFocus sx={{ background: 'white', borderRadius: '8px', width: '400px' }} fullWidth customInput={TextField} 
+      <TextField  value={value} onChange={handleChange} autoFocus sx={{ background: 'white', borderRadius: '8px', width: '400px' }} fullWidth 
       placeholder={intl.formatMessage({id: 'placeholder_scan'})} />
       {
         loading ?

@@ -1405,6 +1405,11 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
+"@fontsource/original-surfer@^4.5.10":
+  version "4.5.10"
+  resolved "https://registry.yarnpkg.com/@fontsource/original-surfer/-/original-surfer-4.5.10.tgz#dcf379612cc7b3fb597956da0800bb174a20e1ae"
+  integrity sha512-qunV1h4UwZg+v32jyF94KvBkKWF/B7Tx85VVOjMUNsZXv+6okqAIvOzd3lfs6xCA18P8wvr9k7n5FE8/gbmPUA==
+
 "@fontsource/poppins@^4.5.10":
   version "4.5.10"
   resolved "https://registry.yarnpkg.com/@fontsource/poppins/-/poppins-4.5.10.tgz#44dbfeacb5d89efca5ad7ad6cc941b2ac1ee424b"

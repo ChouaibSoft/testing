@@ -32,12 +32,12 @@ body::-webkit-scrollbar {
   background-color: #000;
   opacity: .5;
 }
-html[dir='rtl'] time{
-font-family: 'tajawal';
+/* html[dir='rtl'] time{
+font-family: 'Original Surfer';
 }
 html[dir='ltr'] time{
-font-family: 'poppins';
-}
+font-family: 'Original Surfer';
+} */
 #notification {
   position: fixed;
   bottom: 20px;
@@ -51,3 +51,23 @@ font-family: 'poppins';
 .hidden {
   display: none;
 }
+
+
+@font-face {
+  font-family: 'Aloevera-Regular';
+  src: url('./assets/fonts/Aloevera-Regular.otf');
+}
+@font-face {
+  font-family: 'Aloevera-SemiBold';
+  src: url('./assets/fonts/Aloevera-SemiBold.otf');
+}
+
+@font-face {
+  font-family: 'MyriadArabic-Bold';
+  src: url('./assets/fonts/MyriadArabic-Bold.otf');
+}
+@font-face {
+  font-family: 'MyriadArabic--Regular';
+  src: url('./assets/fonts/MyriadArabic-Regular.otf');
+}
+
