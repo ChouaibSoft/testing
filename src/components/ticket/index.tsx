@@ -10,7 +10,7 @@ export const Ticket = forwardRef((props: any, ref) =>
     (
         //@ts-ignore
         <div className="ticket" ref={ref}>
-            {/* <img src={"https://firebasestorage.googleapis.com/v0/b/portfolio-dc68f.appspot.com/o/tmp.jpg?alt=media&token=09492d22-2db8-475d-baae-e7f80955dae9"} alt="ticket" /> */}
+            <img src={"https://firebasestorage.googleapis.com/v0/b/portfolio-dc68f.appspot.com/o/tmp.jpg?alt=media&token=09492d22-2db8-475d-baae-e7f80955dae9"} alt="ticket" />
             <div className="ticket__content">
                 <div className="wrapper">
                     <div className="content">
@@ -54,7 +54,7 @@ export const Ticket = forwardRef((props: any, ref) =>
                             <strong>
                                 Spectator
                             </strong>
-                            <strong>
+                            <strong className="arabic">
                                 المتفرج
                             </strong>
                         </div>
@@ -113,7 +113,7 @@ export const Ticket = forwardRef((props: any, ref) =>
                             </p>
                         </div>
                         <div>
-                            <strong>
+                            <strong className="arabic">
                                 المباراة
                             </strong>
                             <p className="teams teams-ar">
@@ -226,7 +226,7 @@ export const Ticket = forwardRef((props: any, ref) =>
                             <strong>
                                 Price
                             </strong>
-                            <strong>
+                            <strong className="arabic">
                                 السعر
                             </strong>
                         </div>
@@ -280,7 +280,7 @@ export const Ticket = forwardRef((props: any, ref) =>
                             <strong>
                                 Spectator
                             </strong>
-                            <strong>
+                            <strong className="arabic">
                                 المتفرج
                             </strong>
                         </div>
@@ -339,7 +339,7 @@ export const Ticket = forwardRef((props: any, ref) =>
                             </p>
                         </div>
                         <div>
-                            <strong>
+                            <strong className="arabic">
                                 المباراة
                             </strong>
                             <p className="teams teams-ar">
@@ -364,6 +364,7 @@ export const Ticket = forwardRef((props: any, ref) =>
                                     </p>
                                 </div>
                                 <div>
+
                                     <p className="teams teams-ar">
                                         {props?.spectatorInfo?.matchAr?.split('\n')[1]}
                                     </p>
@@ -451,7 +452,7 @@ export const Ticket = forwardRef((props: any, ref) =>
                             <strong>
                                 Price
                             </strong>
-                            <strong>
+                            <strong className="arabic">
                                 السعر
                             </strong>
                         </div>
