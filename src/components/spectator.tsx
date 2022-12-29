@@ -78,9 +78,7 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
     //@ts-ignore
     content: () => refTicket,
     documentTitle: "Ticket component",
-    print: handlePrint,
-    fonts: [{ family: 'Aloevera', source: 'https://fonts.cdnfonts.com/s/79947/Aloevera.woff' },
-    { family: 'Aloevera', source: 'https://fonts.cdnfonts.com/s/79947/Aloevera.woff' }]
+    print: handlePrint
   }
   );
 
