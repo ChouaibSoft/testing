@@ -55,20 +55,19 @@ font-family: 'Original Surfer';
 
 @font-face {
   font-family: 'Aloevera-Regular';
-  src: url('../public/fonts/Aloevera-Regular.otf');
+  src: url('https://fonts.cdnfonts.com/s/79947/Aloevera.woff');
 }
 
 @font-face {
   font-family: 'Aloevera-SemiBold';
-  src: url('../public/fonts/Aloevera-SemiBold.otf');
+  src: url('https://fonts.cdnfonts.com/s/79947/Aloevera.woff');
 }
+@font-face {
+  font-family: MyriadArabic-Bold;
+  src: url('https://fonts.gstatic.com/s/originalsurfer/v18/RWmQoKGZ9vIirYntXJ3_MbekzNMSC0Fu.woff2');
+} 
 
 @font-face {
-  font-family: 'MyriadArabic-Bold';
-  src: url('../public/fonts/MyriadArabic-Bold.otf');
-}
-
-@font-face {
-  font-family: 'MyriadArabic--Regular';
-  src: url('../public/fonts/MyriadArabic-Regular.otf');
-}
+  font-family: MyriadArabic--Regular;
+  src: url('https://fonts.gstatic.com/s/originalsurfer/v18/RWmQoKGZ9vIirYntXJ3_MbekzNMSC0Fu.woff2');
+} 

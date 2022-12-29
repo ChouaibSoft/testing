@@ -60,6 +60,7 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
       console.log("forwarding print request to the main process...");
 
       const data = target.contentWindow.document.documentElement.outerHTML;
+      console.log(data)
       const blob = new Blob([data], { type: "text/html;charset=utf-8;" });
       const url = URL.createObjectURL(blob);
 
@@ -80,7 +81,10 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
     content: () => refTicket,
     documentTitle: "Ticket component",
     print: handlePrint,
-  });
+    fonts: [{ family: 'Aloevera', source: 'https://fonts.cdnfonts.com/s/79947/Aloevera.woff' },
+    { family: 'Aloevera', source: 'https://fonts.cdnfonts.com/s/79947/Aloevera.woff' }]
+  }
+  );
 
 
   useEffect(() => {
@@ -144,9 +148,9 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
   }
 
   const confirmPrinting = async (sucess: boolean, callback?: Function) => {
-    if(sucess){
+    if (sucess) {
       setConfirmLoading(true)
-    }else{
+    } else {
       setLoading(true)
     }
     let payload = {
@@ -162,9 +166,9 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
     }
     try {
       await api.post(`billet/printingResult`, payload)
-      if(sucess){
+      if (sucess) {
         setConfirmLoading(false)
-      }else{
+      } else {
         setLoading(false)
       }
       setTryAgain(false)
@@ -173,9 +177,9 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
         printTicket(true)
       }
     } catch (e: any) {
-      if(sucess){
+      if (sucess) {
         setConfirmLoading(false)
-      }else{
+      } else {
         setLoading(false)
       }
       if (e.response?.data?.errorMessage === 'TICKET_ALREADY_PRINTED') {
@@ -200,17 +204,17 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
                 <CardContent>
                   {
                     confirmLoading ?
-                    <Grid container flexDirection={"column"} justifyContent="center" sx={{ textAlign: 'center', py: 5 }}>
-                      <Grid item>
-                        <CircularProgress />
+                      <Grid container flexDirection={"column"} justifyContent="center" sx={{ textAlign: 'center', py: 5 }}>
+                        <Grid item>
+                          <CircularProgress />
+                        </Grid>
+                        <Grid item>
+                          <Typography variant="body1">
+                            <FormattedMessage id="is_confirming" />
+                          </Typography>
+                        </Grid>
                       </Grid>
-                      <Grid item>
-                        <Typography variant="body1">
-                          <FormattedMessage id="is_confirming" />
-                        </Typography>
-                      </Grid>
-                    </Grid>
-                    : null
+                      : null
                   }
                   {
                     loading ? <Grid container flexDirection={"column"} justifyContent="center" sx={{ textAlign: 'center', py: 5 }}>
