@@ -4,7 +4,7 @@
     width: 210mm;
     height: 148mm;
     font-weight: bold;
-    z-index: 9999;
+    z-index: 15;
     direction: ltr;
     top: 0;
     overflow: hidden;
