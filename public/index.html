@@ -24,13 +24,285 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
   <title>Tadkirati Guichet</title>
+  <style>
+    @font-face {
+      font-family: 'Aloevera-SemiBold';
+      src: url('./fonts/Aloevera-SemiBold.otf');
+    }
+
+    @font-face {
+      font-family: 'MyriadArabic-Bold';
+      src: url('./fonts/MyriadArabic-Bold.otf');
+    }
+
+    @font-face {
+      font-family: 'MyriadArabic--Regular';
+      src: url('./fonts/MyriadArabic-Regular.otf');
+    }
+  </style>
 </head>
 
 <body>
+
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <style>
-    body{margin: 0; padding: 0; overflow-y: 'hidden';}
-    .stadium.arabic,.stadium.arabic strong{font-size:9.5px!important}.content .date,.content strong{white-space:nowrap}.ticket{position:absolute;width:210mm;height:148mm;font-weight:700;z-index:9999;direction:ltr;top:0;overflow:hidden}.ticket__content,.ticket__content-replicate{width:119mm;height:44mm;position:absolute;display:flex}.ticket img{position:absolute;top:0;right:0;width:100%;height:100%;background-size:cover;z-index:0}.ticket__content{top:11.7%;left:4.5%;padding:3px 1rem;flex-direction:column;justify-content:space-between}.ticket__content .wrapper:nth-child(2){flex:1;flex-direction:column;justify-content:center}.ticket__content .wrapper:nth-child(2) .content:first-child{justify-content:center;align-items:center;text-align:center}.ticket__content .wrapper:nth-child(2) .content:nth-child(2),.ticket__content .wrapper:nth-child(2) .content:nth-child(3),.ticket__content .wrapper:nth-child(2) .content:nth-child(4){display:flex;flex-direction:row;justify-content:space-between;align-items:flex-end}.ticket__content .wrapper:nth-child(2) .content:nth-child(2) div:nth-child(3),.ticket__content .wrapper:nth-child(2) .content:nth-child(3) div:nth-child(3),.ticket__content .wrapper:nth-child(2) .content:nth-child(4) div:nth-child(2){text-align:right}.ticket__content .wrapper:nth-child(2) .content:nth-child(2) strong,.ticket__content .wrapper:nth-child(2) .content:nth-child(3) strong,.ticket__content .wrapper:nth-child(2) .content:nth-child(4) strong{font-size:7px}.ticket__content .wrapper:nth-child(2) .content:nth-child(4) strong{display:inline-block}.ticket__content .wrapper:nth-child(2) .content div:first-child,.ticket__content .wrapper:nth-child(2) .content div:nth-child(3),.wrapper:first-child .content:first-child,.wrapper:first-child .content:nth-child(2){flex:.5}.ticket__content .wrapper:nth-child(2) .content:nth-child(3){margin-top:3px}.kick-off time{margin-top:5px!important;font-size:16px!important}.stadium,.stadium strong{font-size:8.5px!important}.ticket__content .wrapper:nth-child(2) .content:nth-child(2) div:last-child strong,.ticket__content .wrapper:nth-child(2) .content:nth-child(3) div:last-child strong{font-size:9px;font-family:MyriadArabic-Bold}.stadium{font-family:Aloevera-Regular!important;font-weight:400!important}.teams{font-size:11px!important}.teams-ar{font-size:13px!important;font-family:MyriadArabic-Bold!important}.stadium.arabic{direction:rtl}.stadium strong{font-weight:600!important}.ticket__content-replicate{top:62%;left:5%;padding:.5rem 1rem;flex-direction:column;justify-content:space-between}.ticket_qr_code{position:absolute;top:36.1%;left:89.3%;transform:rotate(90deg)}.ticket_qr_code-replicate{position:absolute;top:80.5%;left:89.3%}.ticket-code{position:absolute;top:41.8%;left:47.5%}.ticket-code-replicate{position:absolute;top:91.5%;left:47.5%}.ticket-code p{font-size:1.1rem}.qr-code{width:70px;height:72px}.wrapper{display:flex;justify-content:space-between;width:100%}.wrapper:not(:last-child){border-bottom:1px solid #707070;padding-bottom:1.5px}.wrapper:first-child .content:nth-child(3),.wrapper:first-child .content:nth-child(4){flex:1}.content{display:flex;align-items:flex-start;flex-direction:column;padding:1px 0}.content .match{text-align:center}.content strong{display:block;font-weight:400;font-size:9px;text-transform:uppercase;font-family:Aloevera-SemiBold;text-transform:uppercase}.content strong.arabic{font-family:MyriadArabic--Regular;font-size:11px}.number time{font-size:11px}.content p{font-weight:700;padding:0;margin:0;font-size:10px;font-family:Aloevera-Regular}.number{font-family:'Original Surfer'}
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-y: 'hidden';
+    }
+
+    @font-face {
+      font-family: 'Aloevera-Regular';
+      src: url('./fonts/Aloevera-Regular.otf');
+    }
+
+    @font-face {
+      font-family: 'Aloevera-SemiBold';
+      src: url('./fonts/Aloevera-SemiBold.otf');
+    }
+
+    @font-face {
+      font-family: 'MyriadArabic-Bold';
+      src: url('./fonts/MyriadArabic-Bold.otf');
+    }
+
+    @font-face {
+      font-family: 'MyriadArabic--Regular';
+      src: url('./fonts/MyriadArabic-Regular.otf');
+    }
+
+    .stadium.arabic,
+    .stadium.arabic strong {
+      font-size: 9.5px !important
+    }
+
+    .content .date,
+    .content strong {
+      white-space: nowrap
+    }
+
+    .ticket {
+      position: absolute;
+      width: 210mm;
+      height: 148mm;
+      font-weight: 700;
+      z-index: 9999;
+      direction: ltr;
+      top: 0;
+      overflow: hidden
+    }
+
+    .ticket__content,
+    .ticket__content-replicate {
+      width: 119mm;
+      height: 44mm;
+      position: absolute;
+      display: flex
+    }
+
+    .ticket img {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      z-index: 0
+    }
+
+    .ticket__content {
+      top: 11.7%;
+      left: 4.5%;
+      padding: 3px 1rem;
+      flex-direction: column;
+      justify-content: space-between
+    }
+
+    .ticket__content .wrapper:nth-child(2) {
+      flex: 1;
+      flex-direction: column;
+      justify-content: center
+    }
+
+    .ticket__content .wrapper:nth-child(2) .content:first-child {
+      justify-content: center;
+      align-items: center;
+      text-align: center
+    }
+
+    .ticket__content .wrapper:nth-child(2) .content:nth-child(2),
+    .ticket__content .wrapper:nth-child(2) .content:nth-child(3),
+    .ticket__content .wrapper:nth-child(2) .content:nth-child(4) {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end
+    }
+
+    .ticket__content .wrapper:nth-child(2) .content:nth-child(2) div:nth-child(3),
+    .ticket__content .wrapper:nth-child(2) .content:nth-child(3) div:nth-child(3),
+    .ticket__content .wrapper:nth-child(2) .content:nth-child(4) div:nth-child(2) {
+      text-align: right
+    }
+
+    .ticket__content .wrapper:nth-child(2) .content:nth-child(2) strong,
+    .ticket__content .wrapper:nth-child(2) .content:nth-child(3) strong,
+    .ticket__content .wrapper:nth-child(2) .content:nth-child(4) strong {
+      font-size: 7px
+    }
+
+    .ticket__content .wrapper:nth-child(2) .content:nth-child(4) strong {
+      display: inline-block
+    }
+
+    .ticket__content .wrapper:nth-child(2) .content div:first-child,
+    .ticket__content .wrapper:nth-child(2) .content div:nth-child(3),
+    .wrapper:first-child .content:first-child,
+    .wrapper:first-child .content:nth-child(2) {
+      flex: .5
+    }
+
+    .ticket__content .wrapper:nth-child(2) .content:nth-child(3) {
+      margin-top: 3px
+    }
+
+    .kick-off time {
+      margin-top: 5px !important;
+      font-size: 16px !important
+    }
+
+    .stadium,
+    .stadium strong {
+      font-size: 8.5px !important
+    }
+
+    .ticket__content .wrapper:nth-child(2) .content:nth-child(2) div:last-child strong,
+    .ticket__content .wrapper:nth-child(2) .content:nth-child(3) div:last-child strong {
+      font-size: 9px;
+      font-family: MyriadArabic-Bold
+    }
+
+    .stadium {
+      font-family: Aloevera-Regular !important;
+      font-weight: 400 !important
+    }
+
+    .teams {
+      font-size: 11px !important
+    }
+
+    .teams-ar {
+      font-size: 13px !important;
+      font-family: MyriadArabic-Bold !important
+    }
+
+    .stadium.arabic {
+      direction: rtl
+    }
+
+    .stadium strong {
+      font-weight: 600 !important
+    }
+
+    .ticket__content-replicate {
+      top: 62%;
+      left: 5%;
+      padding: .5rem 1rem;
+      flex-direction: column;
+      justify-content: space-between
+    }
+
+    .ticket_qr_code {
+      position: absolute;
+      top: 36.1%;
+      left: 89.3%;
+      transform: rotate(90deg)
+    }
+
+    .ticket_qr_code-replicate {
+      position: absolute;
+      top: 80.5%;
+      left: 89.3%
+    }
+
+    .ticket-code {
+      position: absolute;
+      top: 41.8%;
+      left: 47.5%
+    }
+
+    .ticket-code-replicate {
+      position: absolute;
+      top: 91.5%;
+      left: 47.5%
+    }
+
+    .ticket-code p {
+      font-size: 1.1rem
+    }
+
+    .qr-code {
+      width: 70px;
+      height: 72px
+    }
+
+    .wrapper {
+      display: flex;
+      justify-content: space-between;
+      width: 100%
+    }
+
+    .wrapper:not(:last-child) {
+      border-bottom: 1px solid #707070;
+      padding-bottom: 1.5px
+    }
+
+    .wrapper:first-child .content:nth-child(3),
+    .wrapper:first-child .content:nth-child(4) {
+      flex: 1
+    }
+
+    .content {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      padding: 1px 0
+    }
+
+    .content .match {
+      text-align: center
+    }
+
+    .content strong {
+      display: block;
+      font-weight: 400;
+      font-size: 9px;
+      text-transform: uppercase;
+      font-family: Aloevera-SemiBold;
+      text-transform: uppercase
+    }
+
+    .content strong.arabic {
+      font-family: MyriadArabic--Regular;
+      font-size: 11px
+    }
+
+    .number time {
+      font-size: 11px
+    }
+
+    .content p {
+      font-weight: 700;
+      padding: 0;
+      margin: 0;
+      font-size: 10px;
+      font-family: Aloevera-Regular
+    }
+
+    .number {
+      font-family: 'Original Surfer'
+    }
   </style>
   <div id="root"></div>
   <!--
