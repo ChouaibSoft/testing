@@ -68,7 +68,7 @@
     flex: .5;
 }
 .ticket__content .wrapper:nth-child(2) .content:nth-child(3){
-    margin-top: 3px;
+    margin-top: 1.5px;
 }
 .kick-off time{
     margin-top: 5px !important;
@@ -80,27 +80,28 @@
     font-family: 'MyriadArabic-Bold';
 }
 .stadium{
-    font-size: 8.5px !important;
-    font-family: 'Aloevera-Regular' !important;
-    font-weight: 400 !important;
+    font-size: 8px !important;
+    font-family: 'Aloevera-light' !important;
 }
 .teams{
     font-size: 11px !important;
 }
 .teams-ar{
-    font-size: 13px !important;
-    font-family: 'MyriadArabic-Bold' !important;
+    font-size: 10px !important;
+    font-family: 'Tajawal' !important;
 }
 .stadium.arabic{
     direction: rtl;
     font-size: 9.5px !important;
+    font-family: 'Tajawal' !important;
 }
 .stadium.arabic strong{
+    font-family: 'Tajawal-Bold' !important;
     font-size: 9.5px !important;
 }
 .stadium strong{
     font-weight: 600 !important;
-    font-size: 8.5px !important;
+    font-size: 8px !important;
 }
 .ticket__content-replicate{
     position: absolute;
@@ -170,31 +171,30 @@
 }
 .content strong{
     display: block;
-    font-weight: 400;
     white-space: nowrap;
-    font-size: 9px;
+    font-size: 8px;
     text-transform: uppercase;
-    font-family: 'Aloevera-SemiBold';
+    font-family: 'Aloevera-Regular';
     text-transform: uppercase;
 }
 .content strong.arabic{
-    font-family: 'MyriadArabic--Regular';
-    font-size: 11px;
+    font-family: 'Tajawal-Bold' !important;
+    font-size: 8px;
 }
 
 
 .number time{
-    font-size: 11px;
+    font-size: 10px;
 }
 .content p{
     font-weight: 700;
     padding: 0;
     margin: 0;
-    font-size: 10px;
+    font-size: 9px;
     font-family: 'Aloevera-Regular';
 }
 .number{
-    font-family: 'Original Surfer';
+    font-family: 'Original Surfer' !important;
 }
 .content .date{
     white-space: nowrap;

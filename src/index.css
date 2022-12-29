@@ -52,22 +52,30 @@ font-family: 'Original Surfer';
   display: none;
 }
 
+@font-face {
+  font-family: 'Original Surfer';
+  src: url('https://fonts.gstatic.com/s/originalsurfer/v18/RWmQoKGZ9vIirYntXJ3_MbekzNMSC0Fu.woff2');
+}
 
 @font-face {
+  font-family: 'Aloevera-light';
+  src: url('https://fonts.gstatic.com/s/aleo/v11/c4mg1nF8G8_syKbrxDJJnw.woff2');
+}
+@font-face {
   font-family: 'Aloevera-Regular';
-  src: url('https://fonts.cdnfonts.com/s/79947/Aloevera.woff');
+  src: url('https://fonts.gstatic.com/s/aleo/v11/c4mv1nF8G8_swA3J0Q.woff2');
 }
 
 @font-face {
   font-family: 'Aloevera-SemiBold';
-  src: url('https://fonts.cdnfonts.com/s/79947/Aloevera.woff');
+  src: url('https://fonts.gstatic.com/s/aleo/v11/c4mg1nF8G8_syLbsxDJJnw.woff2');
 }
 @font-face {
-  font-family: MyriadArabic-Bold;
-  src: url('https://fonts.gstatic.com/s/originalsurfer/v18/RWmQoKGZ9vIirYntXJ3_MbekzNMSC0Fu.woff2');
+  font-family: 'Tajawal';
+  src: url('https://fonts.gstatic.com/s/tajawal/v9/Iura6YBj_oCad4k1nzSBC45I.woff2');
 } 
 
 @font-face {
-  font-family: MyriadArabic--Regular;
-  src: url('https://fonts.gstatic.com/s/originalsurfer/v18/RWmQoKGZ9vIirYntXJ3_MbekzNMSC0Fu.woff2');
+  font-family: 'Tajawal-Bold';
+  src: url('https://fonts.gstatic.com/s/tajawal/v9/Iurf6YBj_oCad4k1l4qkHrRpiYlJ.woff2');
 } 

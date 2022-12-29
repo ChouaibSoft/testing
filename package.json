@@ -9,7 +9,6 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@fontsource/original-surfer": "^4.5.10",
     "@fontsource/poppins": "^4.5.10",
     "@fontsource/tajawal": "^4.5.9",
     "@mui/icons-material": "^5.10.16",
