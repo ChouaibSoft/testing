@@ -37,7 +37,7 @@ export const Ticket = forwardRef((props: any, ref) =>
                                 Gates open
                             </strong>
                             <strong className="arabic">
-                                موعد فتح الأبواب
+                                موعد فتح البوابات
                             </strong>
                         </div>
                         <div>
@@ -88,7 +88,7 @@ export const Ticket = forwardRef((props: any, ref) =>
                     <div className="content">
                         <div>
                             <strong>
-                                Kicf-OFF TIME
+                                Kick-OFF TIME
                             </strong>
                             <strong className="arabic">
                                 صافرة البداية
@@ -263,7 +263,7 @@ export const Ticket = forwardRef((props: any, ref) =>
                                 Gates open
                             </strong>
                             <strong className="arabic">
-                                موعد فتح الأبواب
+                                موعد فتح البوابات
                             </strong>
                         </div>
                         <div>
@@ -314,7 +314,7 @@ export const Ticket = forwardRef((props: any, ref) =>
                     <div className="content">
                         <div>
                             <strong>
-                                Kicf-OFF TIME
+                                Kick-OFF TIME
                             </strong>
                             <strong className="arabic">
                                 صافرة البداية

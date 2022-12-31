@@ -6,6 +6,10 @@
   "author": "eadn",
   "description": "Tadkirati Guichet",
   "homepage": "./",
+  "repository": {
+		"type": "git",
+		"url": "https://github.com/ChouaibSoft/testing"
+	},
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
@@ -85,10 +89,6 @@
       "repo": "electron-cra-example",
       "owner": "johndyer24"
     }
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://scm.eadn.dz/chouaib.lokbani/DIGI_TICKET/DIGI_TICKET_DESKTOP.git"
   },
   "browserslist": {
     "production": [

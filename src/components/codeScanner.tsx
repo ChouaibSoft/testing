@@ -18,6 +18,8 @@ export default function CodeScanner({ fetchRecu }: any) {
     React.ComponentType<TransitionProps> | undefined
   >(undefined);
 
+  
+
   const handleChange = (e: any) => {
     setValue(e.target.value)
     setOpen(false)
@@ -34,7 +36,9 @@ export default function CodeScanner({ fetchRecu }: any) {
 
   return (
     <Box>
-      <TextField  value={value} onChange={handleChange} autoFocus sx={{ background: 'white', borderRadius: '8px', width: '400px' }} fullWidth 
+      <TextField  inputProps={{
+        maxLength: 14,
+      }} value={value} onChange={handleChange} autoFocus sx={{ background: 'white', borderRadius: '8px', width: '400px' }} fullWidth 
       placeholder={intl.formatMessage({id: 'placeholder_scan'})} />
       {
         loading ?

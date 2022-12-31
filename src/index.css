@@ -32,12 +32,12 @@ body::-webkit-scrollbar {
   background-color: #000;
   opacity: .5;
 }
-/* html[dir='rtl'] time{
-font-family: 'Original Surfer';
+html[dir='rtl'] header time{
+font-family: 'Tajawal';
 }
-html[dir='ltr'] time{
-font-family: 'Original Surfer';
-} */
+html[dir='ltr']  header time{
+font-family: 'poppins';
+}
 #notification {
   position: fixed;
   bottom: 20px;

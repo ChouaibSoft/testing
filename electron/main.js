@@ -23,9 +23,7 @@ function createWindow () {
   });
   mainWindow.maximize()
   mainWindow.loadURL(startUrl);
-  mainWindow.once('ready-to-show', () => {
-    autoUpdater.checkForUpdatesAndNotify();
-  });
+
 
   const {session: {webRequest}} = mainWindow.webContents;
   const filter = {
@@ -92,9 +90,6 @@ app.on('activate', function () {
   }
 });
 
-// ipcMain.on('restart_app', () => {
-//   autoUpdater.quitAndInstall();
-// });
 
 
 //-------------------- print function -----------------
