@@ -18,10 +18,10 @@
 
     "footer_copyright": "TADKIRATI propulsé par <strong>DigiTicket™®</strong> et conçu par <strong>EADN</strong>",
 
-    "TADKIRATI_TICKET_DOES_NOT_EXIST": "Le billet n'existe pas !",
-    "TICKET_ALREADY_PRINTED": "Ce billet est déjà imprimé",
+    "TADKIRATI_TICKET_DOES_NOT_EXIST": "Le recu n'existe pas !",
+    "TICKET_ALREADY_PRINTED": "Ce ticket est déjà imprimé",
 
-    "RECU_NOT_IN_ETABLISSEMENT": "Le billet n'existe pas dans cette point de retrait !",
+    "RECU_NOT_IN_ETABLISSEMENT": "Le recu n'existe pas dans ce point de retrait, veuillez vous derigez vers le point de retrait mentionné",
 
     "is_printing": "Impression en cours , veuillez patienter..",
     "is_confirming": "Confirmation de l'impression est en cours , veuillez patienter..",

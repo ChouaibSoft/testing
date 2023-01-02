@@ -20,10 +20,10 @@
 
     "footer_copyright": " <strong>TADKIRATI</strong>  مدعوم ب <strong>DigiTicket™®</strong>   و مصمم من طرف <strong>EADN</strong>",
 
-    "TADKIRATI_TICKET_DOES_NOT_EXIST": "التذكرة غير موجودة!",
+    "TADKIRATI_TICKET_DOES_NOT_EXIST": "وصل غير موجودة!",
     "TICKET_ALREADY_PRINTED": "هذه التذكرة مطبوعة من قبل",
 
-    "RECU_NOT_IN_ETABLISSEMENT": "التذكرة غير موجودة!",
+    "RECU_NOT_IN_ETABLISSEMENT": "الوصل غير موجود في نقطة الاستلام هذه ، يرجى الانتقال إلى نقطة الاستلام المذكورة",
 
     "is_printing": "جاري عملية الطباعة ، الرجاء الانتظار ..",
     "is_confirming": "جاري عملية تأكيد الطباعة ، الرجاء الانتظار ..",

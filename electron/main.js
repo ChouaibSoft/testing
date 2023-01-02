@@ -99,7 +99,7 @@ app.on('activate', function () {
 const printOptions = {
   silent: true,
   printBackground: false,
-  device: 'Kyocera ECOSYS M21dn',
+  device: 'canon',
   color: true,
   pageRanges: {
     from: 0,
