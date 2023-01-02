@@ -101,6 +101,7 @@ const printOptions = {
   printBackground: false,
   device: 'canon',
   color: true,
+  autoHideMenuBar: true,
   pageRanges: {
     from: 0,
     to: 0
