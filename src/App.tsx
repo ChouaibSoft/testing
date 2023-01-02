@@ -58,7 +58,7 @@ export function App() {
       let decoedToken = jwtDecode(keycloak.token)
         //@ts-ignore
         if(!decoedToken.groups.includes('agentRetrait_role')){
-          setAllowed(true)
+          keycloak.logout()
         }else{
           setAllowed(true)
         }
