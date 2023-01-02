@@ -53,10 +53,10 @@ function createWindow () {
 autoUpdater.on("update-available", (_event, releaseNotes, releaseName) => {
 	const dialogOpts = {
 		type: 'info',
-		buttons: ['Ok'],
-		title: 'Application Update',
+		buttons: ['موافق'],
+		title: 'تحديث التطبيق',
 		message: process.platform === 'win32' ? releaseNotes : releaseName,
-		detail: 'A new version is being downloaded.'
+		detail: 'يتم تنزيل نسخة جديدة.'
 	}
 	dialog.showMessageBox(dialogOpts, (response) => {
 
@@ -66,10 +66,10 @@ autoUpdater.on("update-available", (_event, releaseNotes, releaseName) => {
 autoUpdater.on("update-downloaded", (_event, releaseNotes, releaseName) => {
 	const dialogOpts = {
 		type: 'info',
-		buttons: ['Restart', 'Later'],
-		title: 'Application Update',
+		buttons: ['أعاد التشغيل', 'لاحقاً'],
+		title: 'تحديث التطبيق',
 		message: process.platform === 'win32' ? releaseNotes : releaseName,
-		detail: 'A new version has been downloaded. Restart the application to apply the updates.'
+		detail: 'تم تنزيل نسخة جديدة. أعد تشغيل التطبيق لتطبيق التحديثات.'
 	};
 	dialog.showMessageBox(dialogOpts).then((returnValue) => {
 		if (returnValue.response === 0) autoUpdater.quitAndInstall()
