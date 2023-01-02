@@ -108,10 +108,10 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
         //@ts-ignore
         const r = await api.get(`billet/printingAttempt/${spectatorInfo.ref}?username=${decodedToken.preferred_username}`)
         setPrintId(r.data)
-        localStorage.setItem('spectator', JSON.stringify({
-          ...spectatorInfo,
-          printId: r.data
-        }))
+        // localStorage.setItem('spectator', JSON.stringify({
+        //   ...spectatorInfo,
+        //   printId: r.data
+        // }))
         handleTicketPrint()
         setTimeout(() => {
           setLoading(false)
@@ -136,7 +136,7 @@ export default function Spectator({ spectatorInfo, setSpectatorInfo, prevState }
     setTryAgain(false)
     setError(false)
     refTicket = null;
-    localStorage.removeItem('spectator')
+    // localStorage.removeItem('spectator')
   }
 
   const printAgain = () => {
