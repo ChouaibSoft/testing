@@ -76,7 +76,6 @@
         "provider": "github",
         "owner": "ChouaibSoft",
         "repo": "testing",
-        "private": true,
         "token": "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"
       }
     },

@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import RTLLayout from "./components/layout/utils/RTLLayout";
 import Locales from "./locales";
-import {  Snackbar, ThemeProvider, Typography } from "@mui/material";
-import bg from "./assets/bg.jpg";
+import {  Snackbar, ThemeProvider } from "@mui/material";
+import bg1 from "./assets/4.jpg";
+import bg2 from "./assets/8.jpg";
+import bg3 from "./assets/9.jpg";
 import Home from "./pages/home";
 import useConfig from "./hooks/useConfig";
 import { useKeycloak } from "@react-keycloak/web";
@@ -11,6 +13,8 @@ import api from "utils/api";
 import Spectator from "components/spectator";
 import { theme } from "./theme";
 import jwtDecode from "jwt-decode";
+
+let images = [bg1, bg2, bg3]
 
 export function App() {
   const { themeDirection, mode } = useConfig();
@@ -54,7 +58,7 @@ export function App() {
       let decoedToken = jwtDecode(keycloak.token)
         //@ts-ignore
         if(!decoedToken.groups.includes('agentRetrait_role')){
-          keycloak.logout()
+          setAllowed(true)
         }else{
           setAllowed(true)
         }
@@ -97,7 +101,7 @@ export function App() {
         <Locales>
           <Home spectatorInfo={spectatorInfo} fetchRecu={fetchRecu}></Home>
           <Spectator spectatorInfo={spectatorInfo} prevState={prevState}  setSpectatorInfo={setSpectatorInfo}></Spectator>
-          <img className="app__bg" src={bg} alt="background image" />
+          <img className="app__bg" src={images[0]} alt="background image" />
           <div className="app__overlay"></div>
           <Snackbar />
         </Locales>
