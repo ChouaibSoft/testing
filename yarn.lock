@@ -1405,11 +1405,6 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@fontsource/original-surfer@^4.5.10":
-  version "4.5.10"
-  resolved "https://registry.yarnpkg.com/@fontsource/original-surfer/-/original-surfer-4.5.10.tgz#dcf379612cc7b3fb597956da0800bb174a20e1ae"
-  integrity sha512-qunV1h4UwZg+v32jyF94KvBkKWF/B7Tx85VVOjMUNsZXv+6okqAIvOzd3lfs6xCA18P8wvr9k7n5FE8/gbmPUA==
-
 "@fontsource/poppins@^4.5.10":
   version "4.5.10"
   resolved "https://registry.yarnpkg.com/@fontsource/poppins/-/poppins-4.5.10.tgz#44dbfeacb5d89efca5ad7ad6cc941b2ac1ee424b"
@@ -4892,6 +4887,11 @@ electron-builder@^23.6.0:
     read-config-file "6.2.0"
     simple-update-notifier "^1.0.7"
     yargs "^17.5.1"
+
+electron-is-dev@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/electron-is-dev/-/electron-is-dev-2.0.0.tgz#833487a069b8dad21425c67a19847d9064ab19bd"
+  integrity sha512-3X99K852Yoqu9AcW50qz3ibYBWY79/pBhlMCab8ToEWS48R0T9tyxRiQhwylE7zQdXrMnx2JKqUJyMPmt5FBqA==
 
 electron-notarize@^1.1.1:
   version "1.2.2"

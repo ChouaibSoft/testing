@@ -18,12 +18,12 @@ export default function CodeScanner({ fetchRecu }: any) {
     React.ComponentType<TransitionProps> | undefined
   >(undefined);
 
-  
+
 
   const handleChange = (e: any) => {
     setValue(e.target.value)
     setOpen(false)
-    if (e.target.value.length ===  14) {
+    if (e.target.value.length === 14) {
       setLoading(true)
       fetchRecu(e.target.value, (error: string) => {
         setLoading(false)
@@ -36,10 +36,10 @@ export default function CodeScanner({ fetchRecu }: any) {
 
   return (
     <Box>
-      <TextField  inputProps={{
+      <TextField inputProps={{
         maxLength: 14,
-      }} value={value} onChange={handleChange} autoFocus sx={{ background: 'white', borderRadius: '8px', width: '400px' }} fullWidth 
-      placeholder={intl.formatMessage({id: 'placeholder_scan'})} />
+      }} value={value} onChange={handleChange} autoFocus sx={{ background: 'white', borderRadius: '8px', width: '400px' }} fullWidth
+        placeholder={intl.formatMessage({ id: 'placeholder_scan' })} />
       {
         loading ?
           <CircularProgress sx={{ position: 'relative', left: '-3rem', top: '.5rem' }} />

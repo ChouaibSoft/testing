@@ -2,6 +2,7 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const url = require('url');
 const { autoUpdater } = require('electron-updater');
+const isDev = require("electron-is-dev");
 
 
 let mainWindow;
@@ -46,11 +47,16 @@ function createWindow () {
   mainWindow.on('closed', function () {
     mainWindow = null;
   });
+
+  if (!isDev) {
+		autoUpdater.checkForUpdates();
+	};
 }
 
 
 
 autoUpdater.on("update-available", (_event, releaseNotes, releaseName) => {
+  console.log("update available")
 	const dialogOpts = {
 		type: 'info',
 		buttons: ['موافق'],
